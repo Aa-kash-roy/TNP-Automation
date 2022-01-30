@@ -14,10 +14,18 @@ app.get('/', function(req, res) {
     // console.log(posts);r
 })
 
-app.get('/login', function(req, res){
-    res.render('login');
+app.get('/user', function(req, res){
+    res.render('user');
 })
 
-app.listen(3000, function () {
+app.get('/portal', function(req, res){
+    res.render('portal')
+})
+
+app.get('/company', function(req, res){
+    res.render('company')
+})
+
+app.listen(3001, function () {
     console.log('Server is running at port 3000')
 })
