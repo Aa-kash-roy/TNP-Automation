@@ -1,24 +1,17 @@
-import express from "express";
-import ReactDOMServer from "react-dom/server.js"
-import TestFun from "./views/portal.js"
-
-// const bodyParser = require('body-parser')
-// const ejs = require('ejs')
-// const TestFun = require("./views/portal")
-// const renderToString = require("react-dom/server")
-
-
+import React from "react"
+import express from "express"
+import {renderToString} from "react-dom/server.js"
+import TestFun from "./views/portal.jsx"
+import bodyParser from "body-parser"
 
 const app = express()
 
 app.set('view engine', 'ejs');
-// app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true })) //not sure if this will cause runtime errors
 app.use(express.static("public"))
 
 app.get('/', function(req, res) {
-
     res.render("home");
-    // console.log(posts);r
 })
 
 app.get('/user', function(req, res){
@@ -26,7 +19,7 @@ app.get('/user', function(req, res){
 })
 
 app.get('/portal', function(req, res){
-    let reactComp = ReactDOMServer.renderToString(TestFun());
+    let reactComp = renderToString(<TestFun/>);
     res.render('portal', {reactApp: reactComp});
 })
 
@@ -34,7 +27,7 @@ app.get('/company', function(req, res){
     res.render('company')
 })
 
-app.listen(3001, function () {
-    console.log('Server is running at port 3001')
+app.listen(3000, function () {
+    console.log('Server is running at port 3000')
 })
 
