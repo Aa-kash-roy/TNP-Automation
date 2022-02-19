@@ -3,12 +3,20 @@ import express from "express"
 import {renderToString} from "react-dom/server.js"
 import TestFun from "./views/portal.jsx"
 import bodyParser from "body-parser"
+import mongoose from "mongoose"
+import {PORT, MONGO_URL} from "./config"
 
 const app = express()
 
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: true })) //not sure if this will cause runtime errors
+app.use(bodyParser.urlencoded({ extended: true })) 
 app.use(express.static("public"))
+
+// connect to the database
+mongoose.connect(MONGO_URL,
+	{ useNewUrlParser: true, useUnifiedTopology: true }, err => {
+		console.log('connected')
+});
 
 app.get('/', function(req, res) {
     res.render("home");
@@ -35,7 +43,8 @@ app.get('/company', function(req, res){
     res.render('company')
 })
 
-app.listen(3000, function () {
-    console.log('Server is running at port 3000')
+
+app.listen(3001, function () {
+    console.log('Server is running at port 3001')
 })
 
