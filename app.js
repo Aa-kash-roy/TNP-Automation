@@ -23,6 +23,14 @@ app.get('/portal', function(req, res){
     res.render('portal', {reactApp: reactComp});
 })
 
+app.post('/portal', function(req, res){
+    let user = req.body.name_input
+    let pass = req.body.password_input
+    console.log(user)
+    console.log(pass)
+    res.redirect('/')
+})
+
 app.get('/company', function(req, res){
     res.render('company')
 })
