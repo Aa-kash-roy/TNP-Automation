@@ -4,6 +4,7 @@ import {renderToString} from "react-dom/server.js"
 import TestFun from "./views/portal.jsx"
 import bodyParser from "body-parser"
 import mongoose from "mongoose"
+const users = require('./auth/controllers/UserController.js')
 import {PORT, MONGO_URL} from "./config"
 
 const app = express()
@@ -11,7 +12,7 @@ const app = express()
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true })) 
 app.use(express.static("public"))
-
+app.use('/users', users) 
 // connect to the database
 mongoose.connect(MONGO_URL,
 	{ useNewUrlParser: true, useUnifiedTopology: true }, err => {
