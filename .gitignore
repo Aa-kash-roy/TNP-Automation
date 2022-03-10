@@ -3,3 +3,7 @@ node_modules/
 
 # ignore environment variables
 .env
+
+#ignore nodemon
+nodemon
+
