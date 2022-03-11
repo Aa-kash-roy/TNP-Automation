@@ -2,6 +2,7 @@ import React from "react"
 import express from "express"
 import {renderToString} from "react-dom/server.js"
 import TestFun from "./views/portal.jsx"
+import StudentProfile from "./views/home.jsx"
 import bodyParser from "body-parser"
 import mongoose from "mongoose"
 import {PORT, MONGO_URL} from "./config"
@@ -25,11 +26,8 @@ mongoose.connect(MONGO_URL,
 });
 
 app.get('/', function(req, res) {
-    res.render("home");
-})
-
-app.get('/user', function(req, res){
-    res.render('user');
+    let reactComp = renderToString(<StudentProfile/>);
+    res.render("home", {reactApp: reactComp});
 })
 
 app.get('/portal', function(req, res){
