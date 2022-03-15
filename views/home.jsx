@@ -1,11 +1,49 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import ReactDOM from "react-dom"
+import mongoose from "mongoose"
+import StudentProfileModel from "../StudentProfile/models/StudentProfile.js"
 
-export default function StudentProfile(){
-  const name = "AAA";
+function retrieve(enrollmentNumber){
+  StudentProfileModel.find({enrollmentNumber: enrollmentNumber}).lean().exec().then((res) => {return res}).catch((err) => {return err});
+}
+
+
+export default function StudentProfile(props){
+  // try{
+    // const name = "AAA";
+    console.log(props);
+    // const record = StudentProfileModel.find({enrollmentNumber: props.enrollmentNumber}).lean().exec(function (err, users) {
+    //   return res.end(JSON.stringify(users));
+    // })
+
+    const [a, b] = useState([])
 
 
 
+    
+    // async function initProducts() {
+    //   await StudentProfileModel.find({enrollmentNumber: props.enrollmentNumber}).lean()
+    //     .then(response => {
+    //         b(response);
+    //         console.log("AAA")
+    //         console.log(a);
+    //     })
+    //     .catch(err => console.error(err));
+    // }
+
+    // initProducts()
+
+    useEffect(() => {
+      console.log("RAAA")
+      getRecord()
+      let record = 
+      b(record);
+      console.log(a);
+      console.log(props.enrollmentNumber);
+    })
+
+    console.log("AA")
+    console.log(a)
     return(
         <div className="container">
         <div className="main-body">
@@ -25,7 +63,7 @@ export default function StudentProfile(){
                       <div className="d-flex flex-column align-items-center text-center">
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width="150"/>
                         <div className="mt-3">
-                          <h4>Akash Kumar</h4>
+                          <h4>AAAAAAA</h4>
                           <p className="text-secondary mb-1">4th Year</p>
                           <p className="text-muted font-size-sm">Computer Science Engineering</p>
                         </div>
@@ -43,7 +81,7 @@ export default function StudentProfile(){
                         <span className="text-secondary">akshkmr</span>
                       </li>
                       <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <h6 className="mb-0"><img src="linkedin.png" width="23" height="23" style={{marginRight: 10+'px'}}/>Linkedin</h6>
+                        <h6 className="mb-0"><img src="../../public/img/linkedin.png" width="23" height="23" style={{marginRight: 10+'px'}}/>Linkedin</h6>
                         <span className="text-secondary">Akash Kumar</span>
                       </li>
                     </ul>
@@ -52,11 +90,11 @@ export default function StudentProfile(){
                   <div className="card mt-3">
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <h6 className="mb-0"> <img src="microsoft.png" width="23" height="23" style={{marginRight: 10+'px'}}/>Microsoft</h6>
+                        <h6 className="mb-0"> <img src="../../public/img/microsoft.png" width="23" height="23" style={{marginRight: 10+'px'}}/>Microsoft</h6>
                         <span className="text-secondary">Research Intern</span>
                       </li>
                       <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <h6 className="mb-0"><img src="google.png" width="23" height="23" style={{marginRight: 10+'px'}}/>Google</h6>
+                        <h6 className="mb-0"><img src="../../public/img/google.png" width="23" height="23" style={{marginRight: 10+'px'}}/>Google</h6>
                         <span className="text-secondary">Software Engineer Intern</span>
                       </li>
                     </ul>
@@ -206,6 +244,10 @@ export default function StudentProfile(){
             </div>
         </div>
     )
+    // } catch (e){
+    //   return "LL"
+      // console.log(e.message)
+    // }
 }
 
 

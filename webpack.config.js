@@ -2,7 +2,11 @@ const webpack = require("webpack");
 const path = require("path");
 
 module.exports = {
-  entry: path.resolve(__dirname, "./src/index.js"),
+  entry: {
+    vendor: ["react"], // Third party libraries
+    index: ["./entrypoints/StudentProfile.jsx"]
+    /// Every pages entry point should be mentioned here
+  },
   module: {
     rules: [
       {
@@ -28,14 +32,5 @@ module.exports = {
         "util": false,
         "crypto-browserify": require.resolve('crypto-browserify'), //if you want to use this module also don't forget npm i crypto-browserify 
       } 
-  },
-  output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: "bundle.js",
-  },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
-  devServer: {
-    contentBase: path.resolve(__dirname, "./dist"),
-    hot: true,
-  },
+  }
 };

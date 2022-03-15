@@ -6,8 +6,13 @@ import StudentProfile from "../../views/home.jsx"
 const router = express.Router();
 
 router.get('/:id', (req, res, next) => {
-    let reactComp = renderToString(<StudentProfile/>);
-    res.render("home", {reactApp: reactComp});
+    // try{
+    const reactComp = renderToString(<StudentProfile enrollmentNumber={req.params.id}/>);
+    // console.log(reactComp)
+    res.render("./home", {reactApp: reactComp});
+    // } catch (e){
+    //     console.log(e)
+    // }
 })
 
 module.exports = router;

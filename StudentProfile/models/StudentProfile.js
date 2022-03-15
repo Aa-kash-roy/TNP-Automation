@@ -52,13 +52,13 @@ const StudentInfo = new Schema({
 })
 
 const StudentSocial = new Schema ({
-    linkedind: {
+    linkedin: {
         type: Url
     },
     github: {
         type: Url
     },
-    linkedin: {
+    website: {
         type: Url
     }
 })
@@ -77,6 +77,11 @@ const StudentInternships = new Schema({
 })
 
 const StudentDetails = new Schema({
+    enrollmentNumber:{
+        type: String,
+        required: true,
+        unique: true
+    },
     studentInfo: {
         type: StudentInfo,
         required: true
@@ -84,22 +89,6 @@ const StudentDetails = new Schema({
     studentSocial: {
         type: StudentSocial,
         required: true
-    },
-})
-
-const UserSchema = new Schema({
-    username: {
-        type: String,
-        required: true,
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-    },
-    password: {
-        type: String,
-        required: true,
     },
     achievements: {
         type: [Url],
@@ -117,11 +106,9 @@ const UserSchema = new Schema({
         type: Boolean,
         required: true
     }
-});
+})
 
-const User =  mongoose.model("user", UserSchema);
-
-module.exports = User;
+module.exports = mongoose.model("StudentProfileModel", StudentDetails);
 
 
 /*
