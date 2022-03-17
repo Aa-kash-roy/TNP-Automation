@@ -3,6 +3,7 @@ node_modules/
 
 # ignore environment variables
 .env
+package-lock.json
 
 #ignore nodemon
 nodemon
