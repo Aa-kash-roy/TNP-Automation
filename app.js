@@ -22,6 +22,7 @@ const company = require('./CompanyProfile/controllers/CompanyProfileController.j
 const test = require('./views/test.js')
 
 
+
 const app = express()
 
 app.set('view engine', 'ejs');

@@ -4,6 +4,7 @@ dist
 
 # ignore environment variables
 .env
+package-lock.json
 
 #ignore nodemon
 nodemon
