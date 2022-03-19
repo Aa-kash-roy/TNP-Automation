@@ -1,8 +1,4 @@
 import React, {useState, useEffect} from "react"
-import ReactDOM from "react-dom"
-import mongoose from "mongoose"
-import StudentProfileModel from "../StudentProfile/models/StudentProfile.js"
-
 
 export default function StudentProfile(props){
   // try{
@@ -58,7 +54,7 @@ export default function StudentProfile(props){
                         <span className="text-secondary">akshkmr</span>
                       </li>
                       <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <h6 className="mb-0"><img src="../../public/img/linkedin.png" width="23" height="23" style={{marginRight: 10+'px'}}/>Linkedin</h6>
+                        <h6 className="mb-0"><img src="../../public/img/linkedin.png" width="23" height="23" style={{margin: "0px 10px 0px 0px"}}/>Linkedin</h6>
                         <span className="text-secondary">Akash Kumar</span>
                       </li>
                     </ul>
