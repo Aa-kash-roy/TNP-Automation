@@ -3,16 +3,25 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    vendor: ["react"], // Third party libraries
-    index: ["./entrypoints/StudentProfile.jsx"]
+    vendor: ["@babel/polyfill", "react"], // Third party libraries
+    test: ["./entrypoints/test.jsx"],
+    company: ["./entrypoints/company.jsx"]
     /// Every pages entry point should be mentioned here
+  },
+  output: {
+    filename: "[name].js" // names of the bundled file will be name of the entry files (mentioned above)
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"],
+        use: {
+          loader: "babel-loader", // asks bundler to use babel loader to transpile es2015 code
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"] 
+          }
+        }
       },
     ],
   },

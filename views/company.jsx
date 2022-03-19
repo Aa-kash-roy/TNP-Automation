@@ -1,9 +1,16 @@
 import React, {useState, useEffect} from "react"
 
 export default function CompanyProfile(props){
-    
+  const [temp, setTemp] = React.useState(0)
+
+  function changeTemp(){
+    console.log(temp);
+      setTemp(temp => temp+1)
+  }
+
     return(
         <div className="container">
+          <button onClick={changeTemp}>{temp} CLICK</button>
     <div className="main-body">
     
           <div className="header">
@@ -24,7 +31,7 @@ export default function CompanyProfile(props){
                   <div className="d-flex flex-column align-items-center text-center">
                     <img src="img/microsoft.png" width="150"/>
                     <div className="mt-3">
-                      <h4>{props?.record.name}</h4>
+                      <h4>{props?.record?.name}</h4>
                     </div>
                   </div>
                 </div>

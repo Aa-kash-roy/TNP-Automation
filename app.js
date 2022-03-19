@@ -1,6 +1,7 @@
 import React from "react"
 import express from "express"
 import {renderToString} from "react-dom/server.js"
+import compression from "compression"
 
 import TestFun from "./views/portal.jsx"
 
@@ -18,17 +19,21 @@ import {PORT, MONGO_URL} from "./config"
 const users = require('./auth/controllers/UserController.js')
 const student = require('./StudentProfile/controllers/StudentProfileController.js')
 const company = require('./CompanyProfile/controllers/CompanyProfileController.js')
+const test = require('./views/test.js')
 
 
 const app = express()
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true })) 
-app.use(express.static("public"))
+
+console.log(__dirname);
+app.use(express.static(__dirname + "/dist"));
 
 app.use('/users', users) 
 app.use('/student', student)
 app.use('/company', company)
+app.use('/', test)
 
 // connect to the database
 mongoose.connect(MONGO_URL,
