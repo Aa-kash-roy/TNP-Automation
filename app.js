@@ -20,6 +20,7 @@ const student = require('./StudentProfile/controllers/StudentProfileController.j
 const company = require('./CompanyProfile/controllers/CompanyProfileController.js')
 
 
+
 const app = express()
 
 app.set('view engine', 'ejs');

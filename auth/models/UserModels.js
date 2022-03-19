@@ -8,13 +8,19 @@ const UserSchema = new Schema({
     },
     email: {
         type: String,
-        required: true,
-        unique: true,
+        required: true        
     },
     password: {
         type: String,
         required: true,
     },
+    confirm_password:{
+        type: String, required: true,
+    },
+    validated: {
+        type: Boolean,
+        default: false
+    }
 });
 
 UserSchema.set('toJSON', {
