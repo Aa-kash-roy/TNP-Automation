@@ -4,5 +4,5 @@ import {hydrate} from "react-dom";
 
 import CompanyProfile from '../views/company.jsx'
 
-hydrate(<CompanyProfile/>, document.getElementById("bodyCompany"));
+hydrate(<CompanyProfile/>, document.getElementById("body"));
 

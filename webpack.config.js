@@ -5,10 +5,12 @@ module.exports = {
   entry: {
     vendor: ["@babel/polyfill", "react"], // Third party libraries
     test: ["./entrypoints/test.jsx"],
-    company: ["./entrypoints/company.jsx"]
+    company: ["./entrypoints/company.jsx"],
+    companysearch: ["./entrypoints/companysearch.jsx"]
     /// Every pages entry point should be mentioned here
   },
   output: {
+    path: path.resolve(__dirname, "public", "bundles"),
     filename: "[name].js" // names of the bundled file will be name of the entry files (mentioned above)
   },
   module: {
