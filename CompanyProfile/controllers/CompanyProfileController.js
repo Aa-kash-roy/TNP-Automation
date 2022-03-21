@@ -13,7 +13,7 @@ router.get('/search', (req, res, next) => {
     if('name' in companyName){
         companyprofiles.find({name: {"$regex": companyName.name, "$options": "i"}}).lean()
         .then(response => {
-            console.log(response)
+            // console.log(response)
             const reactComp = renderToString(<CompanySearch records={response} searchParam={true}/>);
             res.render("./companysearch", {reactApp: reactComp});
         })
