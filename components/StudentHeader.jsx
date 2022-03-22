@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 
-export default function Header(){
+export default function StudentHeader(){
     return (
         <header data-role="Header" className="student-profile-header">
         <div className="student-profile-container02">
