@@ -67,8 +67,9 @@ export default function StudentProfile(props){
       
 
       <div className="student-profile-container">
-        <div className="student-profile-container01"></div>
-        <header data-role="Header" className="student-profile-header">
+        <Header/>
+        {/* <div className="student-profile-container01"></div> */}
+        {/* <header data-role="Header" className="student-profile-header">
           <div className="student-profile-container02">
             <img
               alt="image"
@@ -141,7 +142,7 @@ export default function StudentProfile(props){
               </svg>
             </div>
           </div>
-        </header>
+        </header> */}
         <div className="student-profile-container04">
           <form className="student-profile-form">
             <div className="student-profile-container05">
