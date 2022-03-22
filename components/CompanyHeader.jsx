@@ -13,11 +13,9 @@ export default function CompanyHeader(){
               <nav
                 className="navigation-links-nav navigation-links-root-class-name8"
               >
-                <span className="navigation-links-text"><span>Profile</span></span>
-                <span className="navigation-links-text1"><span>Company</span></span>
-                <span className="navigation-links-text2">
-                  <span>Placements</span>
-                </span>
+                <button className="navigation-links-text"> <a href="/student/BT18CSE031">Profile</a></button>
+                <button className="navigation-links-text"> <a href="/company/search">Company</a></button>
+                <button className="navigation-links-text">Placements</button>
               </nav>
             </div>
           </div>
