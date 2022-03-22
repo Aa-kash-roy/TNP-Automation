@@ -1,6 +1,7 @@
 import React from "react"
 import express from "express"
 import {renderToString} from "react-dom/server.js"
+import compression from "compression"
 
 import TestFun from "./views/portal.jsx"
 
@@ -18,7 +19,11 @@ import {PORT, MONGO_URL} from "./config"
 const users = require('./auth/controllers/UserController.js')
 const student = require('./StudentProfile/controllers/StudentProfileController.js')
 const company = require('./CompanyProfile/controllers/CompanyProfileController.js')
+<<<<<<< HEAD
 const practice = require('./CodingPractice/controller/codingHandler.js')
+=======
+const test = require('./views/test.js')
+>>>>>>> 3bda457cdfbbec6707f92967227d41f443bb060b
 
 
 
@@ -26,12 +31,18 @@ const app = express()
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true })) 
-app.use(express.static("public"))
+
+console.log(__dirname);
+app.use(express.static(__dirname + "/public"));
 
 app.use('/users', users) 
 app.use('/student', student)
 app.use('/company', company)
+<<<<<<< HEAD
 app.use('/practice', practice)
+=======
+app.use('/', test)
+>>>>>>> 3bda457cdfbbec6707f92967227d41f443bb060b
 
 // connect to the database
 
@@ -87,9 +98,9 @@ async function companyProfileData(){
     try{
     const refresh = await companyprofiles.deleteMany({})
     const companyProfile = await companyprofiles.create({
-        name: "micro",
+        name: "Microsoft",
         id: "10222",
-        logo: "BBB",
+        logo: "/img/microsoft.png",
         companySocial:{
             linkedin: {
                 name: "LINKEDIN",
@@ -106,9 +117,9 @@ async function companyProfileData(){
     })
 
     const companyProfile2 = await companyprofiles.create({
-        name: "micro",
+        name: "Some Dummy Company Name",
         id: "10223",
-        logo: "BBB",
+        logo: "/img/linkedin.png",
         companySocial:{
             linkedin: {
                 name: "LINKEDIN",
@@ -125,9 +136,9 @@ async function companyProfileData(){
     })
 
     const companyProfile3 = await companyprofiles.create({
-        name: "microsoft",
+        name: "Google",
         id: "10224",
-        logo: "BBB",
+        logo: "/img/google.png",
         companySocial:{
             linkedin: {
                 name: "LINKEDIN",

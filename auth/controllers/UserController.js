@@ -4,8 +4,8 @@ const bcrypt = require('bcryptjs')
 const userServices = require('../services/UserServices.js')
 const validateUser = require('../helpers/helper.js')
 
-router.get('/', (req, res) => {
-    res.render('dummy')
+router.get('/register', (req, res) => {
+    res.render('register')
 })
 
 router.get('/register', (req, res) => {
@@ -37,7 +37,7 @@ router.post('/register/otpvalidation', (req, res, next) => {
 })
 
 router.get('/login', (req, res) => {
-    res.render('dummy1')
+    res.render('login')
 })
 
 router.get('login/forget-password', (req, res) => {
