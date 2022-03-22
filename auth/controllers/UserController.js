@@ -3,8 +3,8 @@ const router = express.Router();
 const bcrypt = require('bcryptjs')
 const userServices = require('../services/UserServices.js')
 
-router.get('/', (req, res) => {
-    res.render('dummy')
+router.get('/register', (req, res) => {
+    res.render('register')
 })
 router.post('/register', (req, res, next) => {
     const {password} = req.body
@@ -17,7 +17,7 @@ router.post('/register', (req, res, next) => {
 })
 
 router.get('/login', (req, res) => {
-    res.render('dummy1')
+    res.render('login')
 })
 
 router.post('/login', (req, res, next) => {
