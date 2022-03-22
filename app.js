@@ -1,11 +1,16 @@
 import React from "react"
 import express from "express"
 import {renderToString} from "react-dom/server.js"
+import compression from "compression"
 
 import TestFun from "./views/portal.jsx"
-import StudentProfile from "./views/home.jsx"
 
-import StudentProfileModel from "./StudentProfile/models/StudentProfile.js"
+import StudentProfile from "./views/home.jsx"
+import StudentProfileModel, { deleteMany } from "./StudentProfile/models/StudentProfile.js"
+
+import CompanyProfile from "./views/company.jsx"
+import companyprofiles from "./CompanyProfile/models/CompanyProfile.js"
+
 
 import bodyParser from "body-parser"
 import mongoose from "mongoose"
@@ -13,15 +18,23 @@ import {PORT, MONGO_URL} from "./config"
 
 const users = require('./auth/controllers/UserController.js')
 const student = require('./StudentProfile/controllers/StudentProfileController.js')
+const company = require('./CompanyProfile/controllers/CompanyProfileController.js')
+const test = require('./views/test.js')
+
+
 
 const app = express()
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true })) 
-app.use(express.static(__dirname + "/public"))
+
+console.log(__dirname);
+app.use(express.static(__dirname + "/public"));
 
 app.use('/users', users) 
 app.use('/student', student)
+app.use('/company', company)
+app.use('/', test)
 
 // connect to the database
 mongoose.connect(MONGO_URL,
@@ -35,7 +48,7 @@ async function testStudentProfileData(){
     const refresh = await StudentProfileModel.deleteMany({}) //refresh the table on each restart
 
     const studentProfile = await StudentProfileModel.create({
-        enrollmentNumber: "BTBT",
+        enrollmentNumber: "BT18CSE031",
         
         studentInfo:{
             name: "AAA",
@@ -72,6 +85,72 @@ async function testStudentProfileData(){
     })
 }
 
+companyProfileData()
+async function companyProfileData(){
+    try{
+    const refresh = await companyprofiles.deleteMany({})
+    const companyProfile = await companyprofiles.create({
+        name: "Microsoft",
+        id: "10222",
+        logo: "/img/microsoft.png",
+        companySocial:{
+            linkedin: {
+                name: "LINKEDIN",
+                link: "LINKEDIN LINK"
+            },
+            website: {
+                name: "WEBSITE"
+            }
+        },
+        placementData: [
+            {year:1111, students:2222, ctc:1},
+            {year:2222, students:3333, ctc:2}
+        ]
+    })
+
+    const companyProfile2 = await companyprofiles.create({
+        name: "Some Dummy Company Name",
+        id: "10223",
+        logo: "/img/linkedin.png",
+        companySocial:{
+            linkedin: {
+                name: "LINKEDIN",
+                link: "LINKEDIN LINK"
+            },
+            website: {
+                name: "WEBSITE"
+            }
+        },
+        placementData: [
+            {year:1111, students:2222, ctc:1},
+            {year:2222, students:3333, ctc:2}
+        ]
+    })
+
+    const companyProfile3 = await companyprofiles.create({
+        name: "Google",
+        id: "10224",
+        logo: "/img/google.png",
+        companySocial:{
+            linkedin: {
+                name: "LINKEDIN",
+                link: "LINKEDIN LINK"
+            },
+            website: {
+                name: "WEBSITE"
+            }
+        },
+        placementData: [
+            {year:1111, students:2222, ctc:1},
+            {year:2222, students:3333, ctc:2}
+        ]
+    })
+}
+catch (e){
+    console.log(e)
+}
+}
+
 
 app.get('/', function(req, res) {
     let reactComp = renderToString(<StudentProfile/>);
@@ -91,12 +170,9 @@ app.post('/portal', function(req, res){
     res.redirect('/')
 })
 
-app.get('/company', function(req, res){
-    res.render('company')
-})
-
 
 app.listen(3001, function () {
     console.log('Server is running at port 3001')
 })
+
 

@@ -1,8 +1,11 @@
 # ignore node_modules
 node_modules/
+dist
+public/bundles
 
 # ignore environment variables
 .env
+package-lock.json
 
 #ignore nodemon
 nodemon
