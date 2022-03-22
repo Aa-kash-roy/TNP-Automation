@@ -2,40 +2,31 @@ import React, {useState, useEffect} from "react"
 import StudentHeader from "../components/StudentHeader.jsx"
 
 
-function experienceRow(item){
+function experienceRow(item, index){
   const logo = "/img/companies/" + item.company.toLowerCase() + ".png"
   return(
     <div className="student-profile-container13">
-      <img
-        alt="image"
-        src={logo}
-        className="student-profile-image06"
-      />
-      <span className="student-profile-text16">{item.company}</span>
-      <span className="student-profile-text17">{item.designation}</span>
+      <input className="student-profile-text16" defaultValue={item.company} name="company" size="10"/>
+      <input className="student-profile-text17" defaultValue={item.designation} size="10" name="designation"/>
     </div>
   )
 }
 
-function achievementsRow(item){
+function achievementsRow(item, index){
   return (
     <div className="student-profile-container25">
-      <span className="student-profile-text32">
-        {item.name}
-      </span>
+      <input className="student-profile-text32" defaultValue={item.name} size="20" name="achievements"/>
     </div>
   )
 }
 
-function publicationsRow(item){
-  return (
-    <div className="student-profile-container25">
-      <span className="student-profile-text32">
-        {item.name}
-      </span>
-    </div>
-  )
-}
+function publicationsRow(item, index){
+    return (
+      <div className="student-profile-container25">
+        <input className="student-profile-text32" defaultValue={item.name} size="20" name="publications"/>
+      </div>
+    )
+  }
 
 function studentSocialRow(fieldName, fieldValue){
   const logo = "/img/student_social/" + fieldName.toLowerCase() + ".png"
@@ -47,9 +38,7 @@ function studentSocialRow(fieldName, fieldValue){
         className="student-profile-image03"
       />
       <span className="student-profile-text10">{fieldName}</span>
-      <span className="student-profile-text11">
-        {fieldValue}
-      </span>
+      <input className="student-profile-text11" name={fieldName.toLowerCase()} defaultValue={fieldValue} size="15"/>
     </div>
   )
 }
@@ -64,13 +53,13 @@ function studentDetailsRow(fieldName, fieldValue){
         className="student-profile-image09"
       />
       <span className="student-profile-text22">{fieldName}</span>
-      <span className="student-profile-text23">{fieldValue}</span>
+      <input className="student-profile-text23" name={fieldName.toLowerCase()} defaultValue={fieldValue} size="15"/>
     </div>
   )
 }
 
 
-export default function StudentProfile(props){
+export default function StudentProfileEdit(props){
 
   return (
     <div>
@@ -80,7 +69,7 @@ export default function StudentProfile(props){
         <StudentHeader/>
         
         <div className="student-profile-container04">
-          <form className="student-profile-form" action={"/student/"+props?.record?.enrollmentNumber+"/edit"} method="GET">
+          <form className="student-profile-form" action={"/student/" + props.record.enrollmentNumber} /*action="/student/BT18CSE031" */ method="POST">
             <div className="student-profile-container05">
               <div className="student-profile-profile-container">
                 <img
@@ -111,7 +100,7 @@ export default function StudentProfile(props){
 
               </div>
               <div className="student-profile-container12">
-                {props?.record?.internships.map(item => {return experienceRow(item)})}
+                {props?.record?.internships.map((item, index) => {return experienceRow(item, index)})}
               </div>
             </div>
             <div className="student-profile-container16">
@@ -126,16 +115,16 @@ export default function StudentProfile(props){
 
               <div className="student-profile-container23">
                 <div className="student-profile-container24">
-                  {props?.record?.achievements.map(item => {return achievementsRow(item)})}
+                  {props?.record?.achievements.map((item, index) => {return achievementsRow(item, index)})}
                 </div>
                 <div className="student-profile-container30">
-                  {props?.record?.publications.map(item => {return publicationsRow(item)})}
+                  {props?.record?.publications.map((item, index) => {return publicationsRow(item, index)})}
                 </div>
               </div>
 
-              <button className="student-profile-button1 button">
+              <button className="student-profile-button1 button" type="submit">
                 <span className="student-profile-text42">
-                  EDIT PROFILE
+                  FINISH EDIT
                 </span>
               </button>
 
