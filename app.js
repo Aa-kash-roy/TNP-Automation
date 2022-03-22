@@ -19,6 +19,7 @@ import {PORT, MONGO_URL} from "./config"
 const users = require('./auth/controllers/UserController.js')
 const student = require('./StudentProfile/controllers/StudentProfileController.js')
 const company = require('./CompanyProfile/controllers/CompanyProfileController.js')
+const practice = require('./CodingPractice/controller/codingHandler.js')
 const test = require('./views/test.js')
 
 
@@ -34,13 +35,14 @@ app.use(express.static(__dirname + "/public"));
 app.use('/users', users) 
 app.use('/student', student)
 app.use('/company', company)
+app.use('/practice', practice)
 app.use('/', test)
 
 // connect to the database
-mongoose.connect(MONGO_URL,
-	{ useNewUrlParser: true, useUnifiedTopology: true }, err => {
-		console.log('connected')
-});
+
+const mongoDbConnect = () =>{
+    return mongoose.connect(MONGO_URL);
+}
 
 
 testStudentProfileData()
@@ -171,8 +173,13 @@ app.post('/portal', function(req, res){
 })
 
 
-app.listen(3001, function () {
-    console.log('Server is running at port 3001')
-})
+const start = async() =>{
 
-
+    await mongoDbConnect()
+    console.log("Database connected !!")
+    app.listen(3001, function () {
+        console.log('Server is running at port 3001')
+    })
+}
+ 
+start()
