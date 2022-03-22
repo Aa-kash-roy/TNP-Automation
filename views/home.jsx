@@ -1,233 +1,210 @@
 import React, {useState, useEffect} from "react"
-
-export default function StudentProfile(props){
-  // try{
-
-    // const [a, b] = useState([])
+import Header from "../components/Header.jsx"
 
 
-    // useEffect(() => {
-    //   console.log("RAAA")
-    //   getRecord()
-    //   let record = 
-    //   b(record);
-    //   console.log(a);
-    //   console.log(props.enrollmentNumber);
-    // }, [])
+function experienceRow(item){
+  const logo = "/img/companies/" + item.company.toLowerCase() + ".png"
+  return(
+    <div className="student-profile-container13">
+      <img
+        alt="image"
+        src={logo}
+        className="student-profile-image06"
+      />
+      <span className="student-profile-text16">{item.company}</span>
+      <span className="student-profile-text17">{item.designation}</span>
+    </div>
+  )
+}
 
-    // console.log("AA")
-    // console.log(a)
-    return(
-        <div className="container">
-        <div className="main-body">
-        
-              <nav aria-label="breadcrumb" className="main-breadcrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                  <li className="breadcrumb-item"><a href="">User</a></li>
-                  <li className="breadcrumb-item active" aria-current="page">User Profile</li>
-                </ol>
-              </nav>
-        
-              <div className="row gutters-sm">
-                <div className="col-md-4 mb-3">
-                  <div className="card">
-                    <div className="card-body">
-                      <div className="d-flex flex-column align-items-center text-center">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width="150"/>
-                        <div className="mt-3">
-                          <h4>{props.record.enrollmentNumber}</h4>
-                          <p className="text-secondary mb-1">4th Year</p>
-                          <p className="text-muted font-size-sm">Computer Science Engineering</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card mt-3">
-                    <ul className="list-group list-group-flush">
-                      <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <h6 className="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
-                        <span className="text-secondary">https://akashkumar.com</span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <h6 className="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-github mr-2 icon-inline"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>Github</h6>
-                        <span className="text-secondary">akshkmr</span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <h6 className="mb-0"><img src="../../public/img/linkedin.png" width="23" height="23" style={{margin: "0px 10px 0px 0px"}}/>Linkedin</h6>
-                        <span className="text-secondary">Akash Kumar</span>
-                      </li>
-                    </ul>
-                  </div>
+function achievementsRow(item){
+  return (
+    <div className="student-profile-container25">
+      <span className="student-profile-text32">
+        {item.name}
+      </span>
+    </div>
+  )
+}
 
-                  <div className="card mt-3">
-                    <ul className="list-group list-group-flush">
-                      <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <h6 className="mb-0"> <img src="../../public/img/microsoft.png" width="23" height="23" style={{marginRight: 10+'px'}}/>Microsoft</h6>
-                        <span className="text-secondary">Research Intern</span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <h6 className="mb-0"><img src="../../public/img/google.png" width="23" height="23" style={{marginRight: 10+'px'}}/>Google</h6>
-                        <span className="text-secondary">Software Engineer Intern</span>
-                      </li>
-                    </ul>
-                  </div>
+function studentSocialRow(fieldName, fieldValue){
+  const logo = "/img/student_social/" + fieldName.toLowerCase() + ".png"
+  return (
+    <div className="student-profile-container09">
+      <img
+        alt="image"
+        src={logo}
+        className="student-profile-image03"
+      />
+      <span className="student-profile-text10">{fieldName}</span>
+      <span className="student-profile-text11">
+        {fieldValue}
+      </span>
+    </div>
+  )
+}
 
-                  <div className="card mt-3">
-                    <ul className="list-group list-group-flush">
-                      <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <span className="text-secondary">You have not been placed yet.</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                </div>
-
-
-
-
-                <div className="col-md-8">
-                  <div className="card mb-3">
-                    <div className="card-body">
-                      <div className="row">
-                        <div className="col-sm-3">
-                          <h6 className="mb-0">Full Name</h6>
-                        </div>
-                        <div className="col-sm-9 text-secondary">
-                          Akash Kumar
-                        </div>
-                      </div>
-                      <hr/>
-                      <div className="row">
-                        <div className="col-sm-3">
-                          <h6 className="mb-0">Email</h6>
-                        </div>
-                        <div className="col-sm-9 text-secondary">
-                          akashkumar@gmail.com
-                        </div>
-                      </div>
-                      <hr/>
-                      <div className="row">
-                        <div className="col-sm-3">
-                          <h6 className="mb-0">CGPA</h6>
-                        </div>
-                        <div className="col-sm-9 text-secondary">
-                          7.2
-                        </div>
-                      </div>
-                      <hr/>
-                      <div className="row">
-                        <div className="col-sm-3">
-                          <h6 className="mb-0">Mobile</h6>
-                        </div>
-                        <div className="col-sm-9 text-secondary">
-                          9998889999
-                        </div>
-                      </div>
-                      <hr/>
-                      <div className="row">
-                        <div className="col-sm-3">
-                          <h6 className="mb-0">Address</h6>
-                        </div>
-                        <div className="col-sm-9 text-secondary">
-                          Nagpur, Maharashtra
-                        </div>
-                      </div>
-                      <hr/>
-                      <div className="row">
-                        <div className="col-sm-12">
-                          <a className="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="row gutters-sm">
-
-                    <div className="col-sm-6 mb-3">
-                      <div className="card h-100">
-                        <div className="card-body">
-
-                          <ul className="list-group list-group-flush">
-
-                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                              <span className="text-secondary">ACM-ICPC 2020 World Finalist</span>
-                            </li>
-                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                              <span className="text-secondary">Runner up at Smart India Hackathon</span>
-                            </li>
-
-                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                              <span className="text-secondary">Google Summer of Code 2020</span>
-                            </li>
-
-                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <span className="text-secondary"> <a href="www.google.com">Enhancing Privacy Preservation in Speech Data Publishing</a></span>
-                      </li>
-
-                      <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <span className="text-secondary"> <a href="www.google.com">Touch Sensing for a Projected Screen Using Slope Disparity Gating</a></span>
-                      </li>
-
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="col-sm-6 mb-3">
-                      <div className="card h-100">
-                        <div className="card-body">
-
-                          <ul className="list-group list-group-flush">
-
-                            <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <span className="text-secondary"> <a href="www.google.com">Handwritten Character Recognition Using Neural Networks</a></span>
-                      </li>
-
-                      <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <span className="text-secondary"> <a href="www.google.com">Codeforces Virtual Contest Creator</a></span>
-                      </li>
-
-                      <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <span className="text-secondary"> <a href="www.google.com">Rainfall Prediction using K-Neighbours classNameification</a></span>
-                      </li>
-
-                      <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <span className="text-secondary"> <a href="www.google.com">News-App using Django</a></span>
-                      </li>
-
-                      <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                        <span className="text-secondary"> <a href="www.google.com">Inventory Management System</a></span>
-                      </li>
-
-
-                          </ul>
-
-                          
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-
-
-                </div>
-              </div>
-
-            </div>
-        </div>
-    )
-    // } catch (e){
-    //   return "LL"
-      // console.log(e.message)
-    // }
+function studentDetailsRow(fieldName, fieldValue){
+  const image = "/img/student_details/" + fieldName.toLowerCase() + ".png"
+  return (
+    <div className="student-profile-container18">
+      <img
+        alt="image"
+        src={image}
+        className="student-profile-image09"
+      />
+      <span className="student-profile-text22">{fieldName}</span>
+      <span className="student-profile-text23">{fieldValue}</span>
+    </div>
+  )
 }
 
 
+export default function StudentProfile(props){
+  console.log(props)
+  return (
+    <div>
+      
+
+      <div className="student-profile-container">
+        <div className="student-profile-container01"></div>
+        <header data-role="Header" className="student-profile-header">
+          <div className="student-profile-container02">
+            <img
+              alt="image"
+              src="/img/iiitn_logo_transperent_back-200h.png"
+              className="student-profile-image"
+            />
+            <div className="student-profile-nav">
+              <nav
+                className="navigation-links-nav navigation-links-root-class-name12"
+              >
+                <button className="navigation-links-text">Profile</button>
+                <button className="navigation-links-text">Company</button>
+                <button className="navigation-links-text">Placements</button>
+              </nav>
+            </div>
+          </div>
+          <div className="student-profile-btn-group">
+            <button className="student-profile-button button">LOGOUT</button>
+          </div>
+          <div data-type="BurgerMenu" className="student-profile-burger-menu">
+            <svg viewBox="0 0 1024 1024" className="student-profile-icon">
+              <path
+                d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
+              ></path>
+            </svg>
+          </div>
+          <div data-type="MobileMenu" className="student-profile-mobile-menu">
+            <nav className="student-profile-nav1">
+              <div className="student-profile-container03">
+                <img
+                  alt="image"
+                  src="https://presentation-website-assets.teleporthq.io/logos/logo.png"
+                  className="student-profile-image01"
+                />
+                <div
+                  data-type="CloseMobileMenu"
+                  className="student-profile-close-mobile-menu"
+                >
+                  <svg viewBox="0 0 1024 1024" className="student-profile-icon02">
+                    <path
+                      d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <nav
+                className="navigation-links-nav navigation-links-root-class-name12"
+              >
+                <span className="navigation-links-text"><span>Profile</span></span>
+                <span className="navigation-links-text1"><span>Company</span></span>
+                <span className="navigation-links-text2">
+                  <span>Placements</span>
+                </span>
+              </nav>
+            </nav>
+            <div>
+              <svg
+                viewBox="0 0 950.8571428571428 1024"
+                className="student-profile-icon04"
+              >
+                <path
+                  d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
+                ></path>
+                <path
+                  d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"
+                ></path>
+                <path
+                  d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </header>
+        <div className="student-profile-container04">
+          <form className="student-profile-form">
+            <div className="student-profile-container05">
+              <div className="student-profile-profile-container">
+                <img
+                  alt="image"
+                  src="/img/clipart2935933-200w.png"
+                  className="student-profile-image02"
+                />
+                <div className="student-profile-container06">
+                  <span className="student-profile-text">Name:</span>
+                  <span className="student-profile-text01">Enrolment no:</span>
+                  <span className="student-profile-text02">Branch:</span>
+                  <span className="student-profile-text03">Semester:</span>
+                  <span className="student-profile-text04">Year of Passing:</span>
+                </div>
+                <div className="student-profile-container07">
+                  <span className="student-profile-text05">{props.record.studentInfo.name}</span>
+                  <span className="student-profile-text06">{props.record.enrollmentNumber}</span>
+                  <span className="student-profile-text07">{props.record.studentInfo.branch}</span>
+                  <span className="student-profile-text08">{props.record.studentInfo.semester}</span>
+                  <span className="student-profile-text09">{props.record.studentInfo.passingYear}</span>
+                </div>
+              </div>
+              <div className="student-profile-container08">
+                
+                {studentSocialRow("Website", props.record.studentSocial.website.name)}
+                {studentSocialRow("Github", props.record.studentSocial.github.name)}
+                {studentSocialRow("Linkedin", props.record.studentSocial.linkedin.name)}
+
+              </div>
+              <div className="student-profile-container12">
+                {props.record.internships.map(item => {return experienceRow(item)})}
+              </div>
+            </div>
+            <div className="student-profile-container16">
+              <div className="student-profile-container17">
+                {studentDetailsRow("Full Name", props.record.studentInfo.name)}
+                {studentDetailsRow("Email", props.record.studentInfo.personalMail)}
+                {studentDetailsRow("CGPA", props.record.studentInfo.cgpa)}
+                {studentDetailsRow("Mobile Number", props.record.studentInfo.mobile)}
+                {studentDetailsRow("Address", props.record.studentInfo.address)}
+              </div>
 
 
+              <div className="student-profile-container23">
+                <div className="student-profile-container24">
+                  {props.record.achievements.map(item => {return achievementsRow(item)})}
+                </div>
+                <div className="student-profile-container30">
+                  {props.record.publications.map(item => {return achievementsRow(item)})}
+                </div>
+                <button className="student-profile-button1 button">
+                  <span className="student-profile-text42">EDIT PROFILE</span>
+                </button>
+              </div>
 
 
-
-
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  )
+}
 
