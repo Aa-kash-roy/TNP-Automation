@@ -5,11 +5,9 @@ import compression from "compression"
 
 import TestFun from "./views/portal.jsx"
 
-import StudentProfile from "./views/home.jsx"
-import StudentProfileModel, { deleteMany } from "./StudentProfile/models/StudentProfile.js"
 
-import CompanyProfile from "./views/company.jsx"
-import companyprofiles from "./CompanyProfile/models/CompanyProfile.js"
+import { testStudentProfileData } from "./dummydata/students.js"
+import { companyProfileData } from "./dummydata/companies.js"
 
 
 import bodyParser from "body-parser"
@@ -46,118 +44,10 @@ const mongoDbConnect = () =>{
 
 
 testStudentProfileData()
-async function testStudentProfileData(){
-    const refresh = await StudentProfileModel.deleteMany({}) //refresh the table on each restart
-
-    const studentProfile = await StudentProfileModel.create({
-        enrollmentNumber: "BT18CSE031",
-        
-        studentInfo:{
-            name: "AAA",
-            mobile: "1234567890",
-            cgpa: 9.4,
-            address: "11 street",
-            year: 1,
-            branch: "BRANCH"
-        },
-
-        studentSocial:{
-            linkedin: {
-                name: "LINKEDIN",
-                link: "LINKEDIN LINK"
-            },
-            github: {
-                name: "GITHUB"
-            },
-            website: {
-                name: "WEBSITE"
-            }
-        },
-
-        achievements: [{name: "ACH1"}, {name: "ACH2", link:"ACH2 LINK"}],
-
-        publications: [{name: "PUB1", link: "PUB1 link"}, {name: "PUB2"}, {name: "PUB3", link: "PUB3LINK"}],
-
-        internships: [
-            {company: "COMPANY1", designation: "DESGN1"},
-            {company: "COMPANY2", designation: "DESGN2"}
-        ],
-
-        isPlaced: false
-    })
-}
-
 companyProfileData()
-async function companyProfileData(){
-    try{
-    const refresh = await companyprofiles.deleteMany({})
-    const companyProfile = await companyprofiles.create({
-        name: "Microsoft",
-        id: "10222",
-        logo: "/img/microsoft.png",
-        companySocial:{
-            linkedin: {
-                name: "LINKEDIN",
-                link: "LINKEDIN LINK"
-            },
-            website: {
-                name: "WEBSITE"
-            }
-        },
-        placementData: [
-            {year:1111, students:2222, ctc:1},
-            {year:2222, students:3333, ctc:2}
-        ]
-    })
-
-    const companyProfile2 = await companyprofiles.create({
-        name: "Some Dummy Company Name",
-        id: "10223",
-        logo: "/img/linkedin.png",
-        companySocial:{
-            linkedin: {
-                name: "LINKEDIN",
-                link: "LINKEDIN LINK"
-            },
-            website: {
-                name: "WEBSITE"
-            }
-        },
-        placementData: [
-            {year:1111, students:2222, ctc:1},
-            {year:2222, students:3333, ctc:2}
-        ]
-    })
-
-    const companyProfile3 = await companyprofiles.create({
-        name: "Google",
-        id: "10224",
-        logo: "/img/google.png",
-        companySocial:{
-            linkedin: {
-                name: "LINKEDIN",
-                link: "LINKEDIN LINK"
-            },
-            website: {
-                name: "WEBSITE"
-            }
-        },
-        placementData: [
-            {year:1111, students:2222, ctc:1},
-            {year:2222, students:3333, ctc:2}
-        ]
-    })
-}
-catch (e){
-    console.log(e)
-}
-}
 
 
-app.get('/', function(req, res) {
-    let reactComp = renderToString(<StudentProfile/>);
-    res.render("home", {reactApp: reactComp});
-})
+
 
 app.get('/portal', function(req, res){
     let reactComp = renderToString(<TestFun/>);

@@ -16,7 +16,7 @@ function resultRow(data, number){
             <div className="number-column">{number}</div>
             <div className="company-column">{data.name}</div>
             <div className="logo-column">
-                <img src={data.logo} className="logo"/>
+                <img src={"/img/companies/" + data.name.toLowerCase() + ".png"} className="logo"/>
             </div>
             <div className="id-column">
                 <a  href={data.id}>{data.id}</a>

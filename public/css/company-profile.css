@@ -11,6 +11,9 @@
   transition: 0.3s;
   font-weight: 600;
   letter-spacing: 0.9px;
+  background: none;
+  border: none;
+  margin-right: 30px;
 }
 .navigation-links-text:hover {
   color: #000000;
@@ -85,7 +88,7 @@
   align-items: center;
   flex-direction: column;
   background-size: cover;
-  background-image: url("public/playground_assets/abstract_geometric_banner_design_2507-1500w.jpg");
+  background-image: url("/img/company_background.jpg");
 }
 .company-profile-container01 {
   top: 0px;
@@ -114,6 +117,8 @@
   padding-right: var(--dl-space-space-threeunits);
   padding-bottom: var(--dl-space-space-twounits);
   justify-content: space-between;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 2.00%,rgba(0, 210, 244, 0.75) 100.00%);
+
 }
 .company-profile-container02 {
   flex: 0 0 auto;

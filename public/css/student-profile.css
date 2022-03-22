@@ -11,6 +11,9 @@
   transition: 0.3s;
   font-weight: 600;
   letter-spacing: 0.9px;
+  background: none;
+  border: none;
+  margin-right: 30px;
 }
 .navigation-links-text:hover {
   color: #000000;
@@ -80,12 +83,11 @@
 .student-profile-container {
   width: 100%;
   display: flex;
-  overflow: auto;
   min-height: 100vh;
   align-items: center;
   flex-direction: column;
   background-size: cover;
-  background-image: url("public/playground_assets/abstract_geometric_banner_design_2507-1500w.jpg");
+  background-image: url("../img/student_details/background.jpg");
 }
 .student-profile-container01 {
   top: 0px;
@@ -114,6 +116,8 @@
   padding-right: var(--dl-space-space-threeunits);
   padding-bottom: var(--dl-space-space-twounits);
   justify-content: space-between;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 2.00%,rgba(0, 210, 244, 0.75) 100.00%);
+
 }
 .student-profile-container02 {
   flex: 0 0 auto;
@@ -217,8 +221,8 @@
 }
 .student-profile-container04 {
   width: 1400px;
-  display: flex;
-  align-items: flex-start;
+  /* display: flex;
+  align-items: flex-start; */
   background-color: rgba(255, 255, 255, 0.85);
 }
 .student-profile-form {
@@ -618,10 +622,10 @@
   display: flex;
   position: relative;
   align-self: center;
-  margin-top: 12px;
+  margin-top: 10px;
   align-items: flex-start;
   border-radius: 6px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   background-color: rgba(168, 168, 168, 0.25);
 }
 .student-profile-image09 {
@@ -818,10 +822,10 @@
   display: flex;
   position: relative;
   align-self: center;
-  margin-top: 12px;
+  margin-top: 10px;
   align-items: flex-start;
   border-radius: 6px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   background-color: rgba(168, 168, 168, 0.25);
 }
 .student-profile-text32 {

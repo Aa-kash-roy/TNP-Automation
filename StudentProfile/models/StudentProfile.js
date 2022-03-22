@@ -37,17 +37,24 @@ const StudentInfo = new Schema({
         type: String,
         maxlength: maxAdressLength
     },
-    year: {
-        type: Number,
-        required: true,
-        validate: {
-            validator: y => y === 1 || y === 2 || y === 3 || y === 4,
-            message: props => `${props.value} is an invalid year value`
-        }
-    },
     branch: {
         type: String,
         required: true,
+    },
+    semester:{
+        type: Number,
+        required: true,
+        validate: {
+            validator: y => y >=1 && y <= 8,
+            message: props => `${props.value} is an invalid year value`
+        }
+    },
+    passingYear: {
+        type: Number,
+        required: true
+    },
+    personalMail: {
+        type: String
     }
 })
 
@@ -98,7 +105,7 @@ const StudentDetails = new Schema({
         type: [Url],
         required: true
     },
-    internshps: {
+    internships: {
         type: [StudentInternships],
         required: true
     },
