@@ -19,11 +19,8 @@ import {PORT, MONGO_URL} from "./config"
 const users = require('./auth/controllers/UserController.js')
 const student = require('./StudentProfile/controllers/StudentProfileController.js')
 const company = require('./CompanyProfile/controllers/CompanyProfileController.js')
-<<<<<<< HEAD
 const practice = require('./CodingPractice/controller/codingHandler.js')
-=======
 const test = require('./views/test.js')
->>>>>>> 3bda457cdfbbec6707f92967227d41f443bb060b
 
 
 
@@ -38,11 +35,8 @@ app.use(express.static(__dirname + "/public"));
 app.use('/users', users) 
 app.use('/student', student)
 app.use('/company', company)
-<<<<<<< HEAD
 app.use('/practice', practice)
-=======
 app.use('/', test)
->>>>>>> 3bda457cdfbbec6707f92967227d41f443bb060b
 
 // connect to the database
 
