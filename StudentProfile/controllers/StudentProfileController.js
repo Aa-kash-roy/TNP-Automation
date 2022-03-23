@@ -1,7 +1,7 @@
 import React from "react"
 import express from "express"
 import {renderToString} from "react-dom/server.js"
-import StudentProfile from "../../views/home.jsx"
+import StudentProfile from "../../views/student.jsx"
 import StudentProfileEdit from "../../views/studentedit"
 import StudentProfileModel from "../models/StudentProfile.js"
 
@@ -13,7 +13,7 @@ router.get('/:id', (req, res, next) => {
     .then(response => {
         if(response.length > 0){
             const reactComp = renderToString(<StudentProfile record={response[0]}/>);
-            res.render("./home", {reactApp: reactComp});
+            res.render("./student", {reactApp: reactComp});
         }
         else{
             res.status(404);
@@ -42,8 +42,6 @@ router.post('/:id', (req, res, next) => {
     }
 
 
-
-
     StudentProfileModel.findOneAndUpdate({enrollmentNumber: req.params.id}, { $set: {
         achievements: achievements,
         publications: publications,
@@ -61,7 +59,7 @@ router.post('/:id', (req, res, next) => {
 
             console.log(response);
             const reactComp = renderToString(<StudentProfile record={response}/>);
-            res.render("./home", {reactApp: reactComp});
+            res.render("./student", {reactApp: reactComp});
 
         })
         .catch(err => console.error(err));
@@ -74,7 +72,7 @@ router.get('/:id/edit', (req, res, next) => {
     .then(response => {
         if(response.length > 0){
             const reactComp = renderToString(<StudentProfileEdit record={response[0]}/>);
-            res.render("./home", {reactApp: reactComp});
+            res.render("./student", {reactApp: reactComp});
         }
         else{
             res.status(404);
