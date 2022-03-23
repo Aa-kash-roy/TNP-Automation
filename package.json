@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "transpile": "npx babel-node --presets @babel/preset-env app.js",
-    "start": "nodemon --ext '*' --exec npm run transpile",
+    "start": "npm run transpile",
     "webpack": "webpack -w"
   },
   "repository": {
@@ -44,7 +44,6 @@
     "@babel/preset-env": "^7.13.9",
     "@babel/preset-react": "^7.12.13",
     "babel-loader": "^8.2.2",
-    "nodemon": "^2.0.15",
     "react-hot-loader": "^4.13.0",
     "webpack": "^5.24.3",
     "webpack-cli": "^4.5.0",
