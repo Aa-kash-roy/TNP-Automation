@@ -8,17 +8,14 @@ router.get('/register', (req, res) => {
     res.render('register')
 })
 
-router.get('/register', (req, res) => {
-    res.render('dummy')
-})
-
 router.get('/register/otpvalidation', (req, res) => {
-    res.render('otpValidation')
+    res.render('otpvalidation')
 })
 
 router.post('/register', async(req, res, next) => {
     console.log(req.body)
     const {password} = req.body
+    
     const salt = bcrypt.genSaltSync(10);
     req.body.password = bcrypt.hashSync(password, salt);
 
@@ -31,7 +28,7 @@ router.post('/register', async(req, res, next) => {
 router.post('/register/otpvalidation', (req, res, next) => {
 
     userServices.authenticateUser(req.body).then(
-        res.send("User validated !!")
+        res.redirect('/users/login')
     )
     .catch(err=> next(err))
 })
