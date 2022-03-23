@@ -2,13 +2,28 @@ const webpack = require("webpack");
 const path = require("path");
 
 module.exports = {
-  entry: path.resolve(__dirname, "./src/index.js"),
+  entry: {
+    vendor: ["@babel/polyfill", "react"], // Third party libraries
+    test: ["./entrypoints/test.jsx"],
+    company: ["./entrypoints/company.jsx"],
+    companysearch: ["./entrypoints/companysearch.jsx"]
+    /// Every pages entry point should be mentioned here
+  },
+  output: {
+    path: path.resolve(__dirname, "public", "bundles"),
+    filename: "[name].js" // names of the bundled file will be name of the entry files (mentioned above)
+  },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"],
+        use: {
+          loader: "babel-loader", // asks bundler to use babel loader to transpile es2015 code
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"] 
+          }
+        }
       },
     ],
   },
@@ -28,14 +43,5 @@ module.exports = {
         "util": false,
         "crypto-browserify": require.resolve('crypto-browserify'), //if you want to use this module also don't forget npm i crypto-browserify 
       } 
-  },
-  output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: "bundle.js",
-  },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
-  devServer: {
-    contentBase: path.resolve(__dirname, "./dist"),
-    hot: true,
-  },
+  }
 };

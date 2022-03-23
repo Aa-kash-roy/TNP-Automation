@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx babel-node --presets @babel/preset-env app.js"
+    "transpile": "npx babel-node --presets @babel/preset-env app.js",
+    "start": "nodemon --ext '*' --exec npm run transpile",
+    "webpack": "webpack -w"
   },
   "repository": {
     "type": "git",
@@ -20,14 +22,21 @@
   "dependencies": {
     "@babel/node": "^7.16.8",
     "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/polyfill": "^7.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
+    "compression": "^1.7.4",
     "crypto-browserify": "^3.12.0",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
+    "email-validator": "^2.0.4",
     "express": "^4.17.3",
+    "font-awesome": "^4.7.0",
+    "fortawesome": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.1",
+    "nodemailer": "^6.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "request": "^2.79.0"
@@ -37,6 +46,7 @@
     "@babel/preset-env": "^7.13.9",
     "@babel/preset-react": "^7.12.13",
     "babel-loader": "^8.2.2",
+    "nodemon": "^2.0.15",
     "react-hot-loader": "^4.13.0",
     "webpack": "^5.24.3",
     "webpack-cli": "^4.5.0",
