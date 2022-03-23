@@ -26,7 +26,7 @@ export async function companyProfileData(){
     })
 
     const companyProfile2 = await companyprofiles.create({
-        name: "Some Dummy Company Name",
+        name: "Linkedin",
         id: "10223",
         logo: "/img/linkedin.png",
         companySocial:{
