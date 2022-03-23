@@ -27,6 +27,16 @@ function achievementsRow(item){
   )
 }
 
+function publicationsRow(item){
+  return (
+    <div className="student-profile-container25">
+      <span className="student-profile-text32">
+        {item.name}
+      </span>
+    </div>
+  )
+}
+
 function studentSocialRow(fieldName, fieldValue){
   const logo = "/img/student_social/" + fieldName.toLowerCase() + ".png"
   return (
@@ -61,7 +71,7 @@ function studentDetailsRow(fieldName, fieldValue){
 
 
 export default function StudentProfile(props){
-  console.log(props)
+
   return (
     <div>
       
@@ -70,7 +80,7 @@ export default function StudentProfile(props){
         <StudentHeader/>
         
         <div className="student-profile-container04">
-          <form className="student-profile-form">
+          <form className="student-profile-form" action={"/student/"+props?.record?.enrollmentNumber+"/edit"} method="GET">
             <div className="student-profile-container05">
               <div className="student-profile-profile-container">
                 <img
@@ -86,49 +96,57 @@ export default function StudentProfile(props){
                   <span className="student-profile-text04">Year of Passing:</span>
                 </div>
                 <div className="student-profile-container07">
-                  <span className="student-profile-text05">{props.record.studentInfo.name}</span>
-                  <span className="student-profile-text06">{props.record.enrollmentNumber}</span>
-                  <span className="student-profile-text07">{props.record.studentInfo.branch}</span>
-                  <span className="student-profile-text08">{props.record.studentInfo.semester}</span>
-                  <span className="student-profile-text09">{props.record.studentInfo.passingYear}</span>
+                  <span className="student-profile-text05">{props?.record?.studentInfo?.name}</span>
+                  <span className="student-profile-text06">{props?.record?.enrollmentNumber}</span>
+                  <span className="student-profile-text07">{props?.record?.studentInfo.branch}</span>
+                  <span className="student-profile-text08">{props?.record?.studentInfo.semester}</span>
+                  <span className="student-profile-text09">{props?.record?.studentInfo.passingYear}</span>
                 </div>
               </div>
               <div className="student-profile-container08">
                 
-                {studentSocialRow("Website", props.record.studentSocial.website.name)}
-                {studentSocialRow("Github", props.record.studentSocial.github.name)}
-                {studentSocialRow("Linkedin", props.record.studentSocial.linkedin.name)}
+                {studentSocialRow("Website", props?.record?.studentSocial.website.name)}
+                {studentSocialRow("Github", props?.record?.studentSocial.github.name)}
+                {studentSocialRow("Linkedin", props?.record?.studentSocial.linkedin.name)}
 
               </div>
               <div className="student-profile-container12">
-                {props.record.internships.map(item => {return experienceRow(item)})}
+                {props?.record?.internships.map(item => {return experienceRow(item)})}
               </div>
             </div>
             <div className="student-profile-container16">
               <div className="student-profile-container17">
-                {studentDetailsRow("Full Name", props.record.studentInfo.name)}
-                {studentDetailsRow("Email", props.record.studentInfo.personalMail)}
-                {studentDetailsRow("CGPA", props.record.studentInfo.cgpa)}
-                {studentDetailsRow("Mobile Number", props.record.studentInfo.mobile)}
-                {studentDetailsRow("Address", props.record.studentInfo.address)}
+                {studentDetailsRow("Full Name", props?.record?.studentInfo.name)}
+                {studentDetailsRow("Email", props?.record?.studentInfo.personalMail)}
+                {studentDetailsRow("CGPA", props?.record?.studentInfo.cgpa)}
+                {studentDetailsRow("Mobile Number", props?.record?.studentInfo.mobile)}
+                {studentDetailsRow("Address", props?.record?.studentInfo.address)}
               </div>
 
 
               <div className="student-profile-container23">
                 <div className="student-profile-container24">
-                  {props.record.achievements.map(item => {return achievementsRow(item)})}
+                  {props?.record?.achievements.map(item => {return achievementsRow(item)})}
                 </div>
                 <div className="student-profile-container30">
-                  {props.record.publications.map(item => {return achievementsRow(item)})}
+                  {props?.record?.publications.map(item => {return publicationsRow(item)})}
                 </div>
-                <button className="student-profile-button1 button">
-                  <span className="student-profile-text42">EDIT PROFILE</span>
-                </button>
               </div>
+
+              <button className="student-profile-button1 button">
+                <span className="student-profile-text42">
+                  EDIT PROFILE
+                </span>
+              </button>
+
+              
 
 
             </div>
           </form>
+
+          
+          
         </div>
       </div>
     </div>
