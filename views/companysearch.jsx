@@ -1,6 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import CompanyHeader from '../components/StudentHeader'
 
 function noResult(){
     return(
@@ -49,6 +50,7 @@ export default function CompanySearch(props){
     console.log(props);
     return(
         <div>
+            <CompanyHeader/>
             <form action="/company/search" method="GET">
                 <div id="name" className="search-wrapper">
                     <input className="search-bar" type="search" name="name" placeholder="Search for a Company" autoComplete="off"/>
