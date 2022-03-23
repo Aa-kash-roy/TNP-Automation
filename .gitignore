@@ -1,7 +1,7 @@
 # ignore node_modules
 node_modules/
 dist
-public/bundles
+public/bundles/
 
 # ignore environment variables
 .env
