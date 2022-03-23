@@ -4,16 +4,12 @@ const bcrypt = require('bcryptjs')
 const userServices = require('../services/UserServices.js')
 const validateUser = require('../helpers/helper.js')
 
-router.get('/', (req, res) => {
-    res.render('dummy')
-})
-
 router.get('/register', (req, res) => {
-    res.render('dummy')
+    res.render('register')
 })
 
 router.get('/register/otpvalidation', (req, res) => {
-    res.render('otpValidation')
+    res.render('otpvalidation')
 })
 
 router.post('/register', async(req, res, next) => {
@@ -32,13 +28,13 @@ router.post('/register', async(req, res, next) => {
 router.post('/register/otpvalidation', (req, res, next) => {
 
     userServices.authenticateUser(req.body).then(
-        res.render('users/login')
+        res.redirect('/users/login')
     )
     .catch(err=> next(err))
 })
 
 router.get('/login', (req, res) => {
-    res.render('dummy1')
+    res.render('login')
 })
 
 router.get('login/forget-password', (req, res) => {
