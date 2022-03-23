@@ -278,6 +278,7 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    padding-bottom: 30px;
   }
   .search-page-container07 {
     flex: 0 0 auto;
