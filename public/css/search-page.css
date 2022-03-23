@@ -278,6 +278,7 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    padding-bottom: 30px;
   }
   .search-page-container07 {
     flex: 0 0 auto;
@@ -511,3 +512,11 @@
     }
   }
   
+  .no-results{
+    margin: auto;
+    height: 50%;
+    width: 50%;
+    font-size: xx-large;
+    text-align: center;
+    margin-bottom: 100px;
+}
