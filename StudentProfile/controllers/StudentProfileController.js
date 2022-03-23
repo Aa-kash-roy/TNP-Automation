@@ -26,9 +26,28 @@ router.post('/:id', (req, res, next) => {
     console.log(req.body)
     console.log(req.params.id);
 
+    let achievements = [];
+    let publications = [];
+    for(let i=0; i<5; i++){
+        let newach = {name: req.body['achievements'][i], link:''}
+        let newpub = {name: req.body['publications'][i], link:''}
+        achievements.push(newach);
+        publications.push(newpub);
+    }
+
+    let internships = [];
+    for(let i=0; i<2; i++){
+        let newexp = {company: req.body['company'][i], designation: req.body['designation'][i]}
+        internships.push(newexp);
+    }
+
+
+
+
     StudentProfileModel.findOneAndUpdate({enrollmentNumber: req.params.id}, { $set: {
-        // achievements: req.body['achievements'],
-        // publications: req.body['publications'],
+        achievements: achievements,
+        publications: publications,
+        internships: internships,
         'studentInfo.name': req.body['full name'],
         'studentInfo.mobile': req.body['mobile number'],
         'studentInfo.cgpa': req.body['cgpa'],
