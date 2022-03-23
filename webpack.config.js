@@ -6,7 +6,8 @@ module.exports = {
     vendor: ["@babel/polyfill", "react"], // Third party libraries
     test: ["./entrypoints/test.jsx"],
     company: ["./entrypoints/company.jsx"],
-    companysearch: ["./entrypoints/companysearch.jsx"]
+    companysearch: ["./entrypoints/companysearch.jsx"],
+    student: ["./entrypoints/student.jsx"]
     /// Every pages entry point should be mentioned here
   },
   output: {
