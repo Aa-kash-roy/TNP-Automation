@@ -6,6 +6,7 @@ public/bundles
 # ignore environment variables
 .env
 package-lock.json
+package.json
 
 #ignore nodemon
 nodemon
