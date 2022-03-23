@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import CompanyHeader from '../components/StudentHeader'
+import SearchHeader from '../components/SearchHeader'
 
 function noResult(){
     return(
@@ -12,36 +12,29 @@ function noResult(){
 }
 
 function resultRow(data, number){
+    let image = "/img/companies/" + data.name.toLowerCase() + ".png";
+    let alternate = "/img/companies/" + "linkedin" + ".png";
     return (
-        <div className="row" style={{cursor: "pointer"}}>
-            <div className="number-column">{number}</div>
-            <div className="company-column">{data.name}</div>
-            <div className="logo-column">
-                <img src={"/img/companies/" + data.name.toLowerCase() + ".png"} className="logo"/>
-            </div>
-            <div className="id-column">
-                <a  href={data.id}>{data.id}</a>
-            </div>
-        </div> 
+        <div className="search-page-container07">
+            <span className="search-page-text01">{number}</span>
+            <img
+            src={image}
+            className="search-page-image2"
+            />
+            <span className="search-page-text02">{data.name}</span>
+            <span className="search-page-text03"><a href={data.id}>Company Profile</a></span>
+        </div>
     )
 }
 
 function results(records){
     let count = 0;
-    const rows = records.map(r => {
+    const rows = records.map((r, index) => {
         count += 1;
-        return <li key={r.id}>{resultRow(r, count)}</li>
-    })
+        return resultRow(r, count)})
 
-    // console.log(rows)
-    return(
-        <div>
-            <ul className="unordered-list">
-                {rows}
-            </ul>
-        </div>
-    )
-}
+        return rows;
+    }
 
 
 export default function CompanySearch(props){
@@ -50,16 +43,41 @@ export default function CompanySearch(props){
     console.log(props);
     return(
         <div>
-            <CompanyHeader/>
-            <form action="/company/search" method="GET">
-                <div id="name" className="search-wrapper">
-                    <input className="search-bar" type="search" name="name" placeholder="Search for a Company" autoComplete="off"/>
-                </div>
-                <br/>
-            </form>
-            {props.searchParam && props.records.length == 0 && noResult()}
+
+      <div className="search-page-container">
+
+          <SearchHeader/>
+        
+          <form action="/company/search" method="GET">
+        <div className="search-page-container03"></div>
+        <div className="search-page-container04">
+          <div className="search-page-container05">
+            <input
+              type="text"
+              placeholder="Search Company"
+              className="search-page-textinput input"
+              name='name'
+              autoComplete="off"
+            />
+            <button className="search-page-button1 button">
+              <span className="search-page-text">SEARCH</span>
+            </button>
+          </div>
+          <div className="search-page-container06">
+
+          {props.searchParam && props.records.length == 0 && noResult()}
             {props.searchParam && props.records.length != 0 && results(props.records)}
+        
+
+          </div>
         </div>
+        </form>
+
+
+
+      </div>
+
+    </div>
     )
 }
 
