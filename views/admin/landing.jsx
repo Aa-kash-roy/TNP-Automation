@@ -9,9 +9,8 @@ export default function AdminLanding(){
             <a href="admin/year/3">Year 3</a><br/>
             <a href="admin/year/4">Year 4</a><br/>
             <a href="stats">Past reports</a><br/>
-            <a href="new">New application</a><br/>
-            <a href="contacts">Company contacts</a><br/>
-            <a href="announcements">Announce something</a><br/>
+            <a href="admin/newplacement">New application</a><br/>
+            <a href="admin/announce">Announce something</a><br/>
         </div>
     )
 }
