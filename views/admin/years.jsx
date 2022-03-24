@@ -7,7 +7,9 @@ function resultRow(record, index){
             <span>{record.enrollmentNumber}</span>
             <span>{record.studentInfo.name}</span>
             <span>{record.studentInfo.cgpa}</span>
+            <span>{record.studentInfo.mobile}</span>
             <span>{record.backlogs}</span>
+            <span>{recors.studentInfo.branch}</span>
             <span>Completed</span>
             <span>Placed</span>
             <span>Profile</span>
