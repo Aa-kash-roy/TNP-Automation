@@ -53,6 +53,7 @@ app.use('/admin', adminlanding)
 app.use('/admin/year', yeardisplay)
 app.use('/admin/announce', adminannounce)
 app.use('/admin/newplacement', newplacement)
+app.use('/', yeardisplay)
 
 // connect to the database
 

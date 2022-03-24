@@ -42,6 +42,7 @@ const StudentInfo = new Schema({
 })
 
 //TO DO: ADD FIELD FOR OFFER LETTER, INTERNSHIP COMPLETION CERTIFICATE, INTERNSHIP ASSESSMENT FORM
+//TO DO: LOOK INTO DATE TYPE
 const StudentInternship = new Schema({
     internshipCompleted: {
         type: Boolean,
@@ -49,14 +50,23 @@ const StudentInternship = new Schema({
     },
     company: {
         type: String,
-        maxlength: maxCompanyLength
+        maxlength: maxCompanyLength,
     },
     designation: {
         type: String,
-        maxlength: maxDesignationLength
+        maxlength: maxDesignationLength,
     },
     semester: {
-        type: Number
+        type: Number,
+    },
+    offerLetter: {
+        type: Buffer
+    },
+    internshipCompletion: {
+        type: Buffer
+    },
+    internshipAssessment: {
+        type: Buffer
     },
     startDate: {
         type: Date
@@ -83,6 +93,9 @@ const StudentPlacement = new Schema({
     },
     compensation: {
         type: Number,
+    },
+    offerLetter: {
+        type: Buffer
     }
 })
 

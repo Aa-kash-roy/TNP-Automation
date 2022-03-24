@@ -9,9 +9,9 @@ function resultRow(record, index){
             <span>{record.studentInfo.cgpa}</span>
             <span>{record.studentInfo.mobile}</span>
             <span>{record.backlogs}</span>
-            <span>{recors.studentInfo.branch}</span>
-            <span>Completed</span>
-            <span>Placed</span>
+            <span>{record.studentInfo.branch}</span>
+            <span><a href={'/internship/' + record.enrollmentNumber}> AA{record.internship.internshipCompleted}</a></span>
+            <span><a href={'/placement/' + record.enrollmentNumber}> BB{record.placement.isPlaced}</a></span>
             <span>Profile</span>
         </div>
     )
