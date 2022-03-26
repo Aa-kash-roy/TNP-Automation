@@ -1,0 +1,43 @@
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
+
+//TODO: LOOK INTO APPLICATION END TIME
+const NewPlacement = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    ctc:{
+        type: Number
+    },
+    minCGPA:{
+        type: Number,
+        required: true
+    },
+    maxBacklogs:{
+        type: Number,
+        required: true
+    },
+    gender:{
+        type: [String],
+        required: true
+    },
+    role:{
+        type: [String],
+        required: true
+    },
+    eligibleYears:{
+        type: [Number],
+        required: true
+    },
+    allowAll:{
+        type: Boolean,
+        required: true
+    },
+    applicationEndTime: {
+        type: Date,
+        required: true
+    }
+})
+
+module.exports = mongoose.model("newplacements", NewPlacement);
