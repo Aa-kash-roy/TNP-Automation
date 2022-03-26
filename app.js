@@ -71,6 +71,5 @@ const start = async() =>{
         console.log('Server is running at port 3001')
     })
 }
-
  
 start()
