@@ -33,6 +33,10 @@ const NewPlacement = new Schema({
     allowAll:{
         type: Boolean,
         required: true
+    },
+    applicationEndTime: {
+        type: Date,
+        required: true
     }
 })
 

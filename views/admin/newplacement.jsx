@@ -1,5 +1,12 @@
 import React from "react"
 // import DateTimePicker from 'react-datetime-picker';
+import DateFnsUtils from '@date-io/date-fns'; // choose your lib
+import {
+  DatePicker,
+  TimePicker,
+  DateTimePicker,
+  MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
 
 
 function attachmentComp(number, remove){
@@ -21,7 +28,8 @@ function createComp(number, remove){
 
 export default function NewPlacement(){
     let [attachNo, setAttachNo] = React.useState(0);
-    // const [dateValue, onDateChange] = useState(new Date())
+    const [selectedDate, handleDateChange] = React.useState(new Date())
+
 
     function addAttachment(){
         setAttachNo(attach => attach+1)
@@ -43,8 +51,14 @@ export default function NewPlacement(){
         oldInput.parentNode.replaceChild(newInput, oldInput); 
     }
 
+    function sumbit(){
+        let date=document.getElementById('datetime')
+        console.log(date)
+    }
+
     return (
         <div>
+            
             <form action="/admin/newplacement" method="POST" encType="multipart/form-data">
 
 
@@ -92,6 +106,12 @@ export default function NewPlacement(){
                     <label> 3rd Years </label>
                     <input type="checkbox" id="year" name="year" value="fourth" defaultChecked/>
                     <label> 4th Years </label>
+                    <br/>
+                    Application End Time
+                    <br/>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <DateTimePicker value={selectedDate} onChange={handleDateChange} id='datetime' name='datetime'/>
+                    </MuiPickersUtilsProvider>
                 </div>
 
                 Subject
