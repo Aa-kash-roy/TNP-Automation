@@ -5,8 +5,12 @@ import YearDisplay from "../../views/admin/years.jsx"
 import StudentInternship from "../../views/admin/studentinternship.jsx"
 import StudentPlacement from "../../views/admin/studentplacement.jsx"
 import corestudentprofiles from "./models.js"
+import multer from "multer"
+
 
 const router = express.Router();
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 router.get('/:id', (req, res, next) => {
     const year = req.params.id
@@ -29,10 +33,10 @@ router.get('/:id', (req, res, next) => {
 
 router.get('/internship/:roll', (req, res, next) => {
     const enrollmentNumber = req.params.roll
-    corestudentprofiles.find({ enrollmentNumber: enrollmentNumber})
+    corestudentprofiles.findOne({ enrollmentNumber: enrollmentNumber})
     .then( resp => {
         console.log(resp);
-        const reactComp = renderToString(<StudentInternship records={resp}/>);
+        const reactComp = renderToString(<StudentInternship record={resp}/>);
         res.render("./admin/studentinternship", {reactApp: reactComp});
     })
     .catch(err => {
@@ -40,12 +44,17 @@ router.get('/internship/:roll', (req, res, next) => {
     })
 })
 
+router.post('/internship/:roll', upload.any('attachments'), (req, res, next) => {
+    console.log(req.file)
+    res.redirect("/internship/"+req.params.roll)
+})
+
 router.get('/placement/:roll', (req, res, next) => {
     const enrollmentNumber = req.params.roll
-    corestudentprofiles.find({ enrollmentNumber: enrollmentNumber})
+    corestudentprofiles.findOne({ enrollmentNumber: enrollmentNumber})
     .then( resp => {
         console.log(resp);
-        const reactComp = renderToString(<StudentPlacement records={resp}/>);
+        const reactComp = renderToString(<StudentPlacement record={resp}/>);
         res.render("./admin/studentplacement", {reactApp: reactComp});
     })
     .catch(err => {

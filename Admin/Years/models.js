@@ -38,6 +38,14 @@ const StudentInfo = new Schema({
     passingYear: {
         type: Number,
         required: true
+    },
+    gender: {
+        type: String,
+        required: true,
+        validate: {
+            validator: g => g === 'M' || g === 'F',
+            message: props => `Gender must be either M or F`
+        }
     }
 })
 

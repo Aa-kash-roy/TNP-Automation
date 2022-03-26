@@ -4,6 +4,7 @@ import {renderToString} from "react-dom/server.js"
 import NewPlacement from "../../views/admin/newplacement.jsx"
 import {EMAIL, EMAIL_PASSWORD} from "../../config"
 import multer from "multer"
+import newplacements from "./models.js"
 import {EmailSender, testEmailiiiTNvalid} from '../../auth/helpers/emailSender.js'
 
 
@@ -33,7 +34,12 @@ router.get('/', (req, res, next) => {
 router.post('/', upload.any('attachments'), async (req, res, next) => {
     console.log("AaA")
     console.log(req.files)
-    console.log(req.body['subject'])
+    console.log(req.body)
+    // let gender;
+    // if ('gender' in)
+    // const placement = await newplacements.create({
+    //     name: req.body.name
+    // })
     // const email = await createMail(emailid, req.body['message'], req.body['subject'], req.files)
     // await EmailSender(email)
     res.redirect('/admin/newplacement')

@@ -14,7 +14,8 @@ export async function coreStudentProfileData(){
             cgpa: 9.4,
             semester: 5,
             branch: "CSE",
-            passingYear: 2022
+            passingYear: 2022,
+            gender: 'F'
         },
 
         backlogs: 1,
@@ -45,7 +46,8 @@ export async function coreStudentProfileData(){
             cgpa: 9.4,
             semester: 5,
             branch: "CSE",
-            passingYear: 2022
+            passingYear: 2022,
+            gender: 'M'
         },
 
         backlogs: 1,

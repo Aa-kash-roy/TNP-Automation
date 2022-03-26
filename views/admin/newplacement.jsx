@@ -1,5 +1,5 @@
 import React from "react"
-
+// import DateTimePicker from 'react-datetime-picker';
 
 
 function attachmentComp(number, remove){
@@ -7,7 +7,6 @@ function attachmentComp(number, remove){
     return(
         <div>
             <input type="file" id={number} name="attachments"/>
-            <button type="button" onClick={remove}>Remove</button>
         </div>
     )
 }
@@ -22,14 +21,13 @@ function createComp(number, remove){
 
 export default function NewPlacement(){
     let [attachNo, setAttachNo] = React.useState(0);
-    let [attachments, setAttachments] = React.useState([])
+    // const [dateValue, onDateChange] = useState(new Date())
 
     function addAttachment(){
         setAttachNo(attach => attach+1)
     }
 
     function remove(number){
-        setAttachments(attach => attach.splice(number, 1))
         setAttachNo(attach => attach-1)
     }
 
@@ -54,15 +52,7 @@ export default function NewPlacement(){
                 <input type="text"/>
                 <br/>
 
-                Website
-                <input type="text"/>
-                <br/>
-
                 Compensation/CTC
-                <input type="text"/>
-                <br/>
-
-                Phone Number
                 <input type="text"/>
                 <br/>
 
@@ -70,6 +60,38 @@ export default function NewPlacement(){
                 <div>
                     <input type="file" id='logo' name="logo"/>
                     <button type="button" onClick={removeLogo}>Remove</button>
+                </div>
+
+                <div>
+                    Application Criteria
+                    <br/>
+                    Minimum required CGPA <input type="number" name="cgpa" min="0" max="10" step=".01" defaultValue="0"/>
+                    <br/>
+                    Maximum allowable backlogs <input type="number" name="backlogs" min="0" defaultValue="0"/>
+                    <br/>
+                    Gender
+                    <input type="checkbox" id="gender" name="gender" value="male" defaultChecked/>
+                    <label> Male </label>
+                    <input type="checkbox" id="gender" name="gender" value="female" defaultChecked/>
+                    <label> Female </label>
+                    <br/>
+                    Allow all students
+                    <input type="radio" id="allowall" name="allowall" value="yes" defaultChecked/>
+                    <label >Yes</label>
+                    <input type="radio" id="allowall" name="allowall" value="no"/>
+                    <label >No</label>
+                    <br/>
+                    Role
+                    <input type="checkbox" id="role" name="role" value="intern" defaultChecked/>
+                    <label> Intern </label>
+                    <input type="checkbox" id="role" name="role" value="fulltime" defaultChecked/>
+                    <label> Full Time </label>
+                    <br/>
+                    Eligible Years
+                    <input type="checkbox" id="year" name="year" value="third" defaultChecked/>
+                    <label> 3rd Years </label>
+                    <input type="checkbox" id="year" name="year" value="fourth" defaultChecked/>
+                    <label> 4th Years </label>
                 </div>
 
                 Subject
@@ -86,8 +108,10 @@ export default function NewPlacement(){
                 <br/>
                 {createComp(attachNo, remove)}
                 <button onClick={addAttachment} type="button">Add attachment</button>
+                <button type="button" onClick={remove}>Remove attachment</button>
                 <br/>
                 <input type="submit"/>
+                {/* <DateTimePicker onChange={onDateChange} value={dateValue} /> */}
             </form>
         </div>
     )
