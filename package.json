@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "transpile": "npx babel-node --presets @babel/preset-env app.js",
+<<<<<<< HEAD
+    "start": "nodemon --exec npm run transpile",
+=======
     "start": "npm run transpile",
+>>>>>>> 9d18f125fcfd5c057bd99d8a6153ba987b948fd0
     "webpack": "webpack -w"
   },
   "repository": {
