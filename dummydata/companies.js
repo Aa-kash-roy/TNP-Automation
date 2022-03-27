@@ -22,7 +22,10 @@ export async function companyProfileData(){
             {year:2018, students:9, ctc:6},
             {year:2019, students:10, ctc:9},
             {year:2020, students:11, ctc:10}
-        ]
+        ],
+        email: "microsoft@gmail.com",
+        website: "microsoft.com",
+        phone: "1111111111"
     })
 
     const companyProfile2 = await companyprofiles.create({
@@ -60,7 +63,10 @@ export async function companyProfileData(){
         placementData: [
             {year:1111, students:2222, ctc:1},
             {year:2222, students:3333, ctc:2}
-        ]
+        ],
+        email: "google@gmail.com",
+        website: "google.com",
+        phone: "1111111111"
     })
 }
 catch (e){

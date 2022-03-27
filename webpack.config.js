@@ -7,7 +7,8 @@ module.exports = {
     test: ["./entrypoints/test.jsx"],
     company: ["./entrypoints/company.jsx"],
     companysearch: ["./entrypoints/companysearch.jsx"],
-    student: ["./entrypoints/student.jsx"]
+    student: ["./entrypoints/student.jsx"],
+    announce: ["./entrypoints/announce.jsx"]
     /// Every pages entry point should be mentioned here
   },
   output: {

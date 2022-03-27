@@ -5,14 +5,21 @@ const jwt = require('jsonwebtoken');
 dotenv.config();
 
 const TOKEN_SECRET = "abfiudsfnefiuhewof9jeiwkfniewufgiwjhgfiuwg"
-function authenticateToken(req, res, next) {
-    const authHeader = req.headers['authorization']
-    const token = authHeader && authHeader.split(' ')[1]
+async function authenticateToken(req, res, next) {
+    const token = await req.headers['x-access-token']
+    // console.log(authHeader)
+    // const token = await authHeader && authHeader.split(' ')[1]
 
-    if (token == null) return res.sendStatus(401)
+    if (token == null){
+        console.log("Token is none");
+        return res.sendStatus(401)
+    }
 
     jwt.verify(token, TOKEN_SECRET, (err, user) => {
-        if (err) return res.sendStatus(403)
+        if (err){ 
+            console.log("token didn't matched");
+            return res.sendStatus(403)
+        }
         req.user = user
         next()
     })
