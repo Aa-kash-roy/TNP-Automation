@@ -21,7 +21,7 @@ const createMail = (emailid, subject, body, attachments) => {
         to: emailid,
         subject: subject,
         html: body,
-        content: attachments
+        attachments: attachments
     }
     return message
 }
@@ -40,8 +40,15 @@ router.post('/', upload.any('attachments'), async (req, res, next) => {
     // const placement = await newplacements.create({
     //     name: req.body.name
     // })
-    // const email = await createMail(emailid, req.body['message'], req.body['subject'], req.files)
-    // await EmailSender(email)
+
+    let attachments = []
+    for(let i=0; i<req.files.length; i++){
+        attachments.push({filename:req.files[i].originalname, content: req.files[i].buffer})
+    }
+
+    const email = await createMail(emailid, req.body['message'], req.body['subject'], attachments)
+    await EmailSender(email)
+
     res.redirect('/admin/newplacement')
 })
 
