@@ -28,6 +28,9 @@ const adminlanding = require("./Admin/Landing/controller.js")
 const yeardisplay = require("./Admin/Years/controller.js")
 const adminannounce = require("./Admin/Announce/controller.js")
 const newplacement = require("./Admin/NewPlacement/controller.js")
+const admincompanysearch = require("./Admin/CompanySearch/controller.js")
+const placementreports = require("./Admin/PlacementReports/controller.js")
+
 
 
 
@@ -54,6 +57,8 @@ app.use('/admin/year', yeardisplay)
 app.use('/admin/announce', adminannounce)
 app.use('/admin/newplacement', newplacement)
 app.use('/', yeardisplay)
+app.use('/admin/companysearch', admincompanysearch)
+app.use('/admin/placementreports', placementreports)
 
 // connect to the database
 
