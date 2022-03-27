@@ -35,6 +35,7 @@ router.post('/', upload.any('attachments'), async (req, res, next) => {
     console.log("AaA")
     console.log(req.body['gender'])
     console.log(req.body)
+    console.log(req.files)
     
     //TODO: handle case when accidentally entered empty gender/role/year
     let gender, role, eligibleYears;

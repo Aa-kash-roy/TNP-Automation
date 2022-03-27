@@ -27,6 +27,17 @@ export async function newPlacementData(){
             allowAll: true,
         })
 
+        const studentProfile3 = await newplacements.create({
+            gender: ['Female', 'Male'],
+            role: ['Intern'],
+            eligibleYears: ['fourth'],
+            name: 'Linkedin',
+            ctc: "1500000",
+            minCGPA: 9,
+            maxBacklogs: 0,
+            allowAll: true,
+        })
+
     }
     catch(e){
         console.log(e)

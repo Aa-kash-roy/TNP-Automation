@@ -40,6 +40,7 @@ router.post('/', upload.any('attachments'), async (req, res, next) => {
             attachments.push({filename:req.files[i].originalname, content: req.files[i].buffer})
         }
         console.log(attachments)
+        console.log(req.body)
         const email = await createMail(emailid, req.body['message'], req.body['subject'], attachments)
         await EmailSender(email)
         res.redirect('/admin/announce')
