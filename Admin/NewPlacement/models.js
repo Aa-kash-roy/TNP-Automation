@@ -8,7 +8,8 @@ const NewPlacement = new Schema({
         required: true
     },
     ctc:{
-        type: Number
+        type: String,
+        required: true
     },
     minCGPA:{
         type: Number,
@@ -27,7 +28,7 @@ const NewPlacement = new Schema({
         required: true
     },
     eligibleYears:{
-        type: [Number],
+        type: [String],
         required: true
     },
     allowAll:{
@@ -36,7 +37,6 @@ const NewPlacement = new Schema({
     },
     applicationEndTime: {
         type: Date,
-        required: true
     }
 })
 

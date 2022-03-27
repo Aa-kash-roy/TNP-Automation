@@ -61,7 +61,17 @@ const CompanyDetails = new Schema({
     placementData: {
         type: [YearPlacementData],
         required: true
+    },
+    email: {
+        type: String
+    },
+    phone: {
+        type: String
+    },
+    website: {
+        type: String
     }
+
 })
 
 module.exports = mongoose.model("companyprofiles", CompanyDetails);

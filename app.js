@@ -8,6 +8,7 @@ import TestFun from "./views/portal.jsx"
 import { testStudentProfileData } from "./dummydata/students.js"
 import { companyProfileData } from "./dummydata/companies.js"
 import { coreStudentProfileData } from "./dummydata/corestudents.js"
+import { newPlacementData } from "./dummydata/newplacements.js"
 
 
 import bodyParser from "body-parser"
@@ -21,6 +22,7 @@ const student = require('./StudentProfile/controllers/StudentProfileController.j
 const company = require('./CompanyProfile/controllers/CompanyProfileController.js')
 const practice = require('./CodingPractice/controller/codingHandler.js')
 const test = require('./views/test.js')
+const placement = require('./PlacementPage/controller.js')
 
 
 //admin views
@@ -28,6 +30,9 @@ const adminlanding = require("./Admin/Landing/controller.js")
 const yeardisplay = require("./Admin/Years/controller.js")
 const adminannounce = require("./Admin/Announce/controller.js")
 const newplacement = require("./Admin/NewPlacement/controller.js")
+const admincompanysearch = require("./Admin/CompanySearch/controller.js")
+const placementreports = require("./Admin/PlacementReports/controller.js")
+
 
 
 
@@ -46,6 +51,7 @@ app.use('/student', student)
 app.use('/company', company)
 app.use('/practice', practice)
 app.use('/', test)
+app.use('/placements', placement)
 
 
 //admin views
@@ -54,6 +60,8 @@ app.use('/admin/year', yeardisplay)
 app.use('/admin/announce', adminannounce)
 app.use('/admin/newplacement', newplacement)
 app.use('/', yeardisplay)
+app.use('/admin/companysearch', admincompanysearch)
+app.use('/admin/placementreports', placementreports)
 
 // connect to the database
 
@@ -66,6 +74,7 @@ const mongoDbConnect = () =>{
 testStudentProfileData()
 companyProfileData()
 coreStudentProfileData()
+newPlacementData()
 
 
 
