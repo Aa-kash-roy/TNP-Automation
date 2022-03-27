@@ -33,21 +33,57 @@ router.get('/', (req, res, next) => {
 
 router.post('/', upload.any('attachments'), async (req, res, next) => {
     console.log("AaA")
-    console.log(req.files)
+    console.log(req.body['gender'])
     console.log(req.body)
-    // let gender;
-    // if ('gender' in)
-    // const placement = await newplacements.create({
-    //     name: req.body.name
-    // })
+    
+    //TODO: handle case when accidentally entered empty gender/role/year
+    let gender, role, eligibleYears;
 
-    let attachments = []
-    for(let i=0; i<req.files.length; i++){
-        attachments.push({filename:req.files[i].originalname, content: req.files[i].buffer})
+    // console.log(typeof req.body.gender)
+    // console.log(typeof req.body.role)
+    if(req.body['gender'] !==  String)
+        gender = req.body['gender']
+    else
+        gender = [req.body['gender']]
+
+    if(req.body['role'] !== String)
+        role = req.body['role']
+    else
+        role = [req.body['role']]
+
+    if(req.body['year'] !== String)
+        eligibleYears = req.body['year']
+    else
+        eligibleYears = [req.body['year']]
+
+    console.log(gender)
+    console.log(role)
+    console.log(eligibleYears)
+    
+    try{
+        const appl = await newplacements.create({
+            gender: gender,
+            role: role,
+            eligibleYears: eligibleYears,
+            name: req.body.companyname,
+            ctc: req.body.compensation,
+            minCGPA: req.body.cgpa,
+            maxBacklogs: req.body.backlogs,
+            allowAll: req.body.allowall,
+        })
+
+
+        let attachments = []
+        for(let i=0; i<req.files.length; i++){
+            attachments.push({filename:req.files[i].originalname, content: req.files[i].buffer})
+        }
+
+        // const email = await createMail(emailid, req.body['message'], req.body['subject'], attachments)
+        // await EmailSender(email)
     }
-
-    const email = await createMail(emailid, req.body['message'], req.body['subject'], attachments)
-    await EmailSender(email)
+    catch(e){
+        console.log(e)
+    }
 
     res.redirect('/admin/newplacement')
 })

@@ -8,6 +8,7 @@ import TestFun from "./views/portal.jsx"
 import { testStudentProfileData } from "./dummydata/students.js"
 import { companyProfileData } from "./dummydata/companies.js"
 import { coreStudentProfileData } from "./dummydata/corestudents.js"
+import { newPlacementData } from "./dummydata/newplacements.js"
 
 
 import bodyParser from "body-parser"
@@ -71,6 +72,7 @@ const mongoDbConnect = () =>{
 testStudentProfileData()
 companyProfileData()
 coreStudentProfileData()
+newPlacementData()
 
 
 

@@ -15,10 +15,12 @@ const upload = multer({ storage: storage });
 router.get('/:id', (req, res, next) => {
     const year = req.params.id
     console.log(year);
+    const even = 2*year
+    const odd = 2*year-1
     corestudentprofiles.find({
         $or : [
-            { 'studentInfo.semester': 2*year},
-            { 'studentInfo.semester': 2*year-1}
+            { 'studentInfo.semester': even},
+            { 'studentInfo.semester': odd}
         ]
     })
     .then( resp => {

@@ -36,7 +36,7 @@ export default function NewPlacement(){
     }
 
     function remove(number){
-        setAttachNo(attach => attach-1)
+        setAttachNo(attach => Math.max(0, attach-1))
     }
 
     function removeLogo() 
@@ -63,11 +63,11 @@ export default function NewPlacement(){
 
 
                 CompanyName
-                <input type="text"/>
+                <input type="text" name="companyname"/>
                 <br/>
 
                 Compensation/CTC
-                <input type="text"/>
+                <input type="text" name="compensation"/>
                 <br/>
 
                 Logo
