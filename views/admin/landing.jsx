@@ -12,7 +12,16 @@ export default function AdminLanding(){
             <a href="/admin/newplacement">New application</a><br/>
             <a href="/admin/announce">Announce something</a><br/>
             <a href="/admin/companysearch">Company Details</a><br/>
-            <a> Update Database </a><br/>
+            <form method="POST" encType="multipart/form-data">
+                Update Database<br/>
+                <input
+                    type="file"
+                    placeholder="placeholder"
+                    id="myfile"
+                    name="newdb"                  />
+                <input type="submit"/> <br/>
+
+            </form>
             
         </div>
     )

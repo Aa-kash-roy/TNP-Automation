@@ -203,38 +203,3 @@ export default function Announce(){
         </div>
     )
 }
-
-
-{/* <div>
-            <form action="/admin/announce" method="POST" encType="multipart/form-data">
-                Send To
-                <br/>
-                <div>
-                    <input type="checkbox" id="year" name="year" value="1" defaultChecked/>
-                    <label> 1st Year </label>
-                    <input type="checkbox" id="year" name="year" value="2" defaultChecked/>
-                    <label> 2nd Year </label>
-                    <input type="checkbox" id="year" name="year" value="3" defaultChecked/>
-                    <label> 3rd Year </label>
-                    <input type="checkbox" id="year" name="year" value="4" defaultChecked/>
-                    <label> 4th Year </label>
-                </div>
-                Subject
-                <br/>
-                <input type="text" name="subject"/>
-                <br/>
-                Insert text
-                <br/>
-                <textarea name="message">
-                </textarea>
-                <br/>
-            
-                Attachments
-                <br/>
-                {createComp(attachNo, remove)}
-                <button onClick={addAttachment} type="button" name='add' id="add">Add attachment</button>
-                <button type="button" onClick={remove} id="remove" name='remove'>Remove attachment</button>
-                <br/>
-                <input type="submit"/>
-            </form>
-        </div> */}
