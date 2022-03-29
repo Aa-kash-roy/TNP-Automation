@@ -6,6 +6,7 @@ import {renderToString} from "react-dom/server.js"
 import Announce from "../../views/admin/announce.jsx"
 import multer from "multer"
 import {EmailSender, testEmailiiiTNvalid} from '../../auth/helpers/emailSender.js'
+const getRecipientsFromYear = require("./helper")
 
 const router = express.Router();
 const storage = multer.memoryStorage();
@@ -35,13 +36,27 @@ router.get('/', (req, res, next) => {
 router.post('/', upload.any('attachments'), async (req, res, next) => {
 
     try{
+
+        var recipients = ["bt18cse036@iiitn.ac.in", "bt18cse036@iiitn.ac.in"]
+        // if(typeof(req.body.year) == "string"){
+        //     recipients = recipients.concat(await getRecipientsFromYear(req.body.year))
+        // }
+        // else{
+        //     const years = req.body.year
+        //     for(const year of years) {
+        //         recipients = recipients.concat(await getRecipientsFromYear(year))
+        //     }
+        // }
+        
+        console.log(recipients)
+
         let attachments = []
         for(let i=0; i<req.files.length; i++){
             attachments.push({filename:req.files[i].originalname, content: req.files[i].buffer})
         }
         console.log(attachments)
         console.log(req.body)
-        const email = await createMail(emailid, req.body['message'], req.body['subject'], attachments)
+        const email = await createMail(recipients, req.body['message'], req.body['subject'], attachments)
         await EmailSender(email)
         res.redirect('/admin/announce')
     }

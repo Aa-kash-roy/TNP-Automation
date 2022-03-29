@@ -4,6 +4,8 @@ import {renderToString} from "react-dom/server.js"
 import StudentProfile from "../../views/student.jsx"
 import StudentProfileEdit from "../../views/studentedit"
 import StudentProfileModel from "../models/StudentProfile.js"
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
 const router = express.Router();
 

@@ -6,9 +6,9 @@ dotenv.config();
 
 const TOKEN_SECRET = "abfiudsfnefiuhewof9jeiwkfniewufgiwjhgfiuwg"
 async function authenticateToken(req, res, next) {
-    const token = await req.headers['x-access-token']
-    // console.log(authHeader)
-    // const token = await authHeader && authHeader.split(' ')[1]
+    const token = await req.headers['form-data']
+    console.log(token)
+    token = await authHeader && authHeader.split(' ')[1]
 
     if (token == null){
         console.log("Token is none");
