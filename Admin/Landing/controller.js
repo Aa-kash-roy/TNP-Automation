@@ -32,55 +32,58 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', upload.single('newdb'), async (req, res, next) => {
-    console.log(req.file)
-    if(!req.file){
-        res.redirect('/admin')
-    }
-    else{
-        const file = xlsx.read(req.file.buffer)
-        
-        const del = await corestudentprofiles.deleteMany({})
-  
-        const sheets = file.SheetNames
-        for(let i = 0; i < sheets.length; i++)
-        {
-            const temp = xlsx.utils.sheet_to_json(file.Sheets[file.SheetNames[i]])
-            if(i == 1)
-                console.log(temp)
-            console.log(file.SheetNames[i])
-            const semester = parseInt(file.SheetNames[i].charAt(9))
-            for(let j=0; j<temp.length; j++){
-                const cr = await corestudentprofiles.create({
-                    enrollmentNumber: temp[j]['Roll. No.'],
-        
-                    studentInfo:{
-                        name: temp[j]['Name'],
-                        cgpa: temp[j]["CGPA"],
-                        semester: semester,
-                        branch: temp[j]["Branch"],
-                        passingYear: getPassingYear(semester),
-                        gender: temp[j]["Gender"]
-                    },
-
-                    backlogs: temp[j]["Number of Backlogs"],
-
-                    internship: {
-                        company: temp[j]["Internship Company"],
-                        designation: temp[j]["Internship Designation"],
-                        internshipCompleted: temp[j]["Internship Status"],
-                        semester: temp[j]["Internship Semester"]
-                    },
-
-                    placement: {
-                        company: temp[j]["Placement Company"], 
-                        designation: temp[j]["Placement Designation"], 
-                        compensation: temp[j]["Placement Package"],
-                        isPlaced: temp[j]["Placement Status"]
-                    }
-                })
-            }
+    try{
+        console.log(req.file)
+        if(!req.file){
+            res.redirect('/admin')
         }
-        res.redirect('/admin')
+        else{
+            const file = xlsx.read(req.file.buffer)
+            
+            const del = await corestudentprofiles.deleteMany({})
+
+            const sheets = file.SheetNames
+            for(let i = 0; i < sheets.length; i++)
+            {
+                const temp = xlsx.utils.sheet_to_json(file.Sheets[file.SheetNames[i]])
+                const semester = parseInt(file.SheetNames[i].charAt(9))
+                for(let j=0; j<temp.length; j++){
+                    const cr = await corestudentprofiles.create({
+                        enrollmentNumber: temp[j]['Roll. No.'],
+            
+                        studentInfo:{
+                            name: temp[j]['Name'],
+                            cgpa: temp[j]["CGPA"],
+                            semester: semester,
+                            branch: temp[j]["Branch"],
+                            passingYear: getPassingYear(semester),
+                            gender: temp[j]["Gender"],
+                            email: temp[j]["Email"]
+                        },
+
+                        backlogs: temp[j]["Number of Backlogs"],
+
+                        internship: {
+                            company: temp[j]["Internship Company"],
+                            designation: temp[j]["Internship Designation"],
+                            internshipCompleted: temp[j]["Internship Status"],
+                            semester: temp[j]["Internship Semester"]
+                        },
+
+                        placement: {
+                            company: temp[j]["Placement Company"], 
+                            designation: temp[j]["Placement Designation"], 
+                            compensation: temp[j]["Placement Package"],
+                            isPlaced: temp[j]["Placement Status"]
+                        }
+                    })
+                }
+            }
+            res.redirect('/admin')
+        }
+    }
+    catch(e){
+        console.log(e)
     }
 
 })

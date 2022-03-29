@@ -14,7 +14,9 @@ export async function coreStudentProfileData(){
             semester: 5,
             branch: "CSE",
             passingYear: 2022,
-            gender: 'F'
+            gender: 'F',
+            email: "bt18cse031@iiitn.ac.in"
+
         },
 
         backlogs: 1,
@@ -31,7 +33,7 @@ export async function coreStudentProfileData(){
             designation: "SDE Intern", 
             compensation: "10",
             isPlaced: "Pending"
-        }
+        },
     })
 
 
@@ -45,7 +47,9 @@ export async function coreStudentProfileData(){
             semester: 5,
             branch: "CSE",
             passingYear: 2022,
-            gender: 'M'
+            gender: 'M',
+            email: "bt18cse032@iiitn.ac.in"
+
         },
 
         backlogs: 1,
@@ -62,7 +66,8 @@ export async function coreStudentProfileData(){
             designation: "SDE Intern", 
             compensation: "10",
             isPlaced: "Placed"
-        }
+        },
+
     })
 }
 catch(e){
