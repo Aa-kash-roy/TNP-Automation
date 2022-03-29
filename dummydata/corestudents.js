@@ -22,7 +22,7 @@ export async function coreStudentProfileData(){
         internship: {
             company: "Google",
             designation: "SDE Intern",
-            internshipCompleted: true,
+            internshipCompleted: "Completed",
             semester: 6
         },
 
@@ -30,7 +30,7 @@ export async function coreStudentProfileData(){
             company: "Microsoft", 
             designation: "SDE Intern", 
             compensation: "10",
-            isPlaced: true
+            isPlaced: "Pending"
         }
     })
 
@@ -53,7 +53,7 @@ export async function coreStudentProfileData(){
         internship: {
             company: "Google",
             designation: "SDE Intern",
-            internshipCompleted: true,
+            internshipCompleted: "Pending",
             semester: 6
         },
 
@@ -61,7 +61,7 @@ export async function coreStudentProfileData(){
             company: "Microsoft", 
             designation: "SDE Intern", 
             compensation: "10",
-            isPlaced: true
+            isPlaced: "Placed"
         }
     })
 }

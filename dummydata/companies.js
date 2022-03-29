@@ -38,13 +38,16 @@ export async function companyProfileData(){
                 link: "LINKEDIN LINK"
             },
             website: {
-                name: "WEBSITE"
+                name: "linkedin.com"
             }
         },
         placementData: [
             {year:1111, students:2222, ctc:1},
             {year:2222, students:3333, ctc:2}
-        ]
+        ],
+        email: "linkedin@gmail.com",
+        website: "linkedin.com",
+        phone: "1111111111"
     })
 
     const companyProfile3 = await companyprofiles.create({
