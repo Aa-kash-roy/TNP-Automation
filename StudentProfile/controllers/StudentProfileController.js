@@ -63,17 +63,17 @@ router.get('/:id', async (req, res, next) => {
                     ],
             
                     internships: [
-                        {company: "Google", designation: "SDE Intern"},
-                        {company: "Microsoft", designation: "SDE Intern"},
+                        {company: "", designation: ""},
+                        {company: "", designation: ""},
                     ],
 
                     isPlaced: false
                 })
-                const reactComp = renderToString(<StudentProfile record={createEntry}/>);
+                const reactComp = renderToString(<StudentProfile record={createEntry} coredb={coredb}/>);
                 res.render("./student", {reactApp: reactComp});
             }
             else{
-                const reactComp = renderToString(<StudentProfile record={studentdb}/>);
+                const reactComp = renderToString(<StudentProfile record={studentdb} coredb={coredb}/>);
                 res.render("./student", {reactApp: reactComp});
             }
         }
@@ -122,8 +122,7 @@ router.post('/:id', upload.single('resume'), (req, res, next) => {
     .then(response => {
 
             // console.log(response);
-            const reactComp = renderToString(<StudentProfile record={response}/>);
-            res.render("./student", {reactApp: reactComp});
+            res.redirect('/student/'+req.params.id);
 
         })
         .catch(err => console.error(err));
@@ -139,7 +138,7 @@ router.get('/:id/edit', (req, res, next) => {
             res.render("./student", {reactApp: reactComp});
         }
         else{
-            res.status(404);
+            res.redirect('/student/'+enrollmentNumber);
         }
     })
     .catch(err => console.error(err));
