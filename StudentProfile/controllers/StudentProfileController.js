@@ -67,6 +67,8 @@ router.get('/:id', async (req, res, next) => {
                         {company: "", designation: ""},
                     ],
 
+                    applications: [],
+
                     isPlaced: false
                 })
                 const reactComp = renderToString(<StudentProfile record={createEntry} coredb={coredb}/>);

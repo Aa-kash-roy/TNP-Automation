@@ -1,6 +1,26 @@
 import React from "react"
 
-function placementRow(item, index){
+function notApplied(item){
+  return(
+    <button className="placement-page-button1 button" name="applicationId" value={item._id.toString()}>
+      <span>
+        <span>APPLY</span>
+      </span>
+    </button>
+  )
+}
+
+function applied(item){
+  return(
+    <div className="placement-page-button1 button">
+      <span>
+        <span>APPLIED</span>
+      </span>
+    </div>
+  )
+}
+
+function placementRow(item, index, applications){
     const img = "/img/companies/" + item.name.toLowerCase() + ".png";
     return(
 
@@ -12,12 +32,8 @@ function placementRow(item, index){
                 className="placement-page-image2"
               />
               <span className="placement-page-text02">{item.name}</span>
-              <span className="placement-page-text03">{item.role.length==2?"Full-time+Intern":item.role[0]}</span>
-              <button className="placement-page-button1 button">
-                <span>
-                  <span>APPLY</span>
-                </span>
-              </button>
+              <span className="placement-page-text03">{item.role}</span>
+              {applications.includes(item._id.toString())?applied(item):notApplied(item)}
             </div>
 
     )
@@ -111,15 +127,17 @@ export default function Placement(props){
             </div>
           </div>
         </header>
+        <form method="POST">
         <div className="placement-page-container03"></div>
         <div className="placement-page-container04">
           <div className="placement-page-container05">
             <span className="placement-page-text">Placement &amp; Internship</span>
             
-            {props.records.map((item, index) => placementRow(item, index))}
+              {props.records.map((item, index) => placementRow(item, index, props.applications))}
             
           </div>
         </div>
+        </form>
       </div>
     </div>
     )

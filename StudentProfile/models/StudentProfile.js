@@ -108,6 +108,10 @@ const StudentDetails = new Schema({
         type: Boolean,
         required: true
     },
+    applications: {
+        type: [String],
+        required: true
+    },
     resume: {
         type: Buffer
     }
