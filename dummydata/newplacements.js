@@ -7,7 +7,7 @@ export async function newPlacementData(){
 
         const studentProfile = await newplacements.create({
             gender: ['Female'],
-            role: ['Intern', 'Fulltime'],
+            role: 'Intern',
             eligibleYears: ['third'],
             name: 'Google',
             ctc: "1200000",
@@ -18,7 +18,7 @@ export async function newPlacementData(){
 
         const studentProfile2 = await newplacements.create({
             gender: ['Female', 'Male'],
-            role: ['Fulltime'],
+            role: 'Fulltime',
             eligibleYears: ['fourth'],
             name: 'Microsoft',
             ctc: "1500000",
@@ -29,7 +29,7 @@ export async function newPlacementData(){
 
         const studentProfile3 = await newplacements.create({
             gender: ['Female', 'Male'],
-            role: ['Intern'],
+            role: 'Intern',
             eligibleYears: ['fourth'],
             name: 'Linkedin',
             ctc: "1500000",

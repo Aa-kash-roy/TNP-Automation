@@ -43,7 +43,7 @@ function studentSocialRow(fieldName, fieldValue){
   )
 }
 
-function studentDetailsRow(fieldName, fieldValue){
+function studentDetailsRowEditable(fieldName, fieldValue){
   const image = "/img/student_details/" + fieldName.toLowerCase() + ".png"
   return (
     <div className="student-profile-container18">
@@ -54,6 +54,21 @@ function studentDetailsRow(fieldName, fieldValue){
       />
       <span className="student-profile-text22">{fieldName}</span>
       <input className="student-profile-text23" name={fieldName.toLowerCase()} defaultValue={fieldValue} size="15"/>
+    </div>
+  )
+}
+
+function studentDetailsRowNonEditable(fieldName, fieldValue){
+  const image = "/img/student_details/" + fieldName.toLowerCase() + ".png"
+  return (
+    <div className="student-profile-container18">
+      <img
+        alt="image"
+        src={image}
+        className="student-profile-image09"
+      />
+      <span className="student-profile-text22">{fieldName}</span>
+      <span className="student-profile-text23">{fieldValue}</span>
     </div>
   )
 }
@@ -69,7 +84,7 @@ export default function StudentProfileEdit(props){
         <StudentHeader/>
         
         <div className="student-profile-container04">
-          <form className="student-profile-form" action={"/student/" + props.record.enrollmentNumber} /*action="/student/BT18CSE031" */ method="POST">
+          <form className="student-profile-form" action={"/student/" + props.record.enrollmentNumber} method="POST" encType="multipart/form-data">
             <div className="student-profile-container05">
               <div className="student-profile-profile-container">
                 <img
@@ -102,14 +117,17 @@ export default function StudentProfileEdit(props){
               <div className="student-profile-container12">
                 {props?.record?.internships.map((item, index) => {return experienceRow(item, index)})}
               </div>
+              {/* <div className="student-profile-container08">
+                <input type="file" name="resume"/>
+              </div> */}
             </div>
             <div className="student-profile-container16">
               <div className="student-profile-container17">
-                {studentDetailsRow("Full Name", props?.record?.studentInfo.name)}
-                {studentDetailsRow("Email", props?.record?.studentInfo.personalMail)}
-                {studentDetailsRow("CGPA", props?.record?.studentInfo.cgpa)}
-                {studentDetailsRow("Mobile Number", props?.record?.studentInfo.mobile)}
-                {studentDetailsRow("Address", props?.record?.studentInfo.address)}
+                {studentDetailsRowNonEditable("Full Name", props?.record?.studentInfo.name)}
+                {studentDetailsRowEditable("Email", props?.record?.studentInfo.personalMail)}
+                {studentDetailsRowNonEditable("CGPA", props?.record?.studentInfo.cgpa)}
+                {studentDetailsRowEditable("Mobile Number", props?.record?.studentInfo.mobile)}
+                {studentDetailsRowEditable("Address", props?.record?.studentInfo.address)}
               </div>
 
 

@@ -24,7 +24,7 @@ const NewPlacement = new Schema({
         required: true
     },
     role:{
-        type: [String],
+        type: String,
         required: true
     },
     eligibleYears:{
@@ -37,6 +37,9 @@ const NewPlacement = new Schema({
     },
     applicationEndTime: {
         type: Date,
+    },
+    numberOfApplications: {
+        type: Number
     }
 })
 

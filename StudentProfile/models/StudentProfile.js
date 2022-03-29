@@ -10,7 +10,6 @@ const maxDesignationLength = 64;
 const Url = new Schema({
     name: {
         type: String,
-        required: true,
         maxlength: maxUrlNameLength
     },
     link: {
@@ -26,8 +25,6 @@ const StudentInfo = new Schema({
     },
     mobile: {
         type: String,
-        required: true,
-        minlength: 10,
         maxlength: 10
     },
     cgpa: {
@@ -73,12 +70,10 @@ const StudentSocial = new Schema ({
 const StudentInternships = new Schema({
     company: {
         type: String,
-        required: true,
         maxlength: maxCompanyLength
     },
     designation: {
         type: String,
-        required: true,
         maxlength: maxDesignationLength
     }
 })
@@ -113,49 +108,16 @@ const StudentDetails = new Schema({
         type: Boolean,
         required: true
     },
+    applications: {
+        type: [String],
+        required: true
+    },
     resume: {
-        data: Buffer,
-        contentType: String
+        type: Buffer
+
     }
 })
 
 module.exports = mongoose.model("StudentProfileModel", StudentDetails);
 
 
-/*
-Url : {
-	name : String
-	link : String
-}
-
-StudentInfo : {
-	name : String
-	mobile : String
-	cgpa : Number
-	address : String
-	year : Int
-	branch : String
-}
-
-StudentSocial : {
-	linkedin : Url
-	github : Url
-	website : Url
-}
-
-StudentInternships : {
-	Company : String
-	Designation : String
-}
-
-StudentDetails : {
-	studentPhoto : -----
-	studentInfo : StudentInfo
-	socialLinks : StudentSocial
-	achievements : Array Url
-	publication : Array Url
-	internships : Array StudentInternships
-	isPlaced : Boolean
-	resume : -----
-}
-*/

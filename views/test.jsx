@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function Test(){
+export default function Test(props){
     const [number, setNumber] = React.useState(0);
 
     function add(){
@@ -10,6 +10,7 @@ export default function Test(){
     
     return(
         <div>
+            {props.number} <br/>
             <button onClick={add}>Click Me</button>
             <p>{number}</p>
         </div>

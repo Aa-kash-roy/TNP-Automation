@@ -10,7 +10,6 @@ export async function coreStudentProfileData(){
         
         studentInfo:{
             name: "Akash Kumar",
-            mobile: "1234567890",
             cgpa: 9.4,
             semester: 5,
             branch: "CSE",
@@ -42,7 +41,6 @@ export async function coreStudentProfileData(){
         
         studentInfo:{
             name: "Akash Kumar",
-            mobile: "1234567890",
             cgpa: 9.4,
             semester: 5,
             branch: "CSE",
