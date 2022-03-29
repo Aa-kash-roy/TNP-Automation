@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "transpile": "npx babel-node --presets @babel/preset-env app.js",
-    "start": "node app.js",
+    "start": "npm run transpile",
     "webpack": "webpack -w"
   },
   "repository": {
@@ -67,6 +67,6 @@
     "webpack-dev-server": "^3.11.2"
   },
   "engines": {
-    "node": "16.x"
+    "node": "16.13.2"
   }
 }
