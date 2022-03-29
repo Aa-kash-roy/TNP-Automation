@@ -78,6 +78,9 @@ newPlacementData()
 
 
 
+app.get('/', (req, res) =>{
+    res.send("Hoiiiiiiiiiiii")
+})
 app.get('/portal', function(req, res){
     let reactComp = renderToString(<TestFun/>);
     res.render('portal', {reactApp: reactComp});
@@ -96,7 +99,7 @@ const start = async() =>{
 
     await mongoDbConnect()
     console.log("Database connected !!")
-    app.listen(3001, function () {
+    app.listen(3001 || process.env.PORT, function () {
         console.log('Server is running at port 3001')
     })
 }
