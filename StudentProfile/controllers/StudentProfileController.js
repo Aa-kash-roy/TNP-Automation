@@ -7,6 +7,7 @@ import StudentProfileModel from "../models/StudentProfile.js"
 import multer from "multer"
 import corestudentprofiles from "../../Admin/Years/models.js"
 
+
 const router = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage});

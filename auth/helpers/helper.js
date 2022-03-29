@@ -1,4 +1,3 @@
-
 const UserOtpVerification = require('../models/otpModel')
 const EmailHandler = require('./emailSender')
 
@@ -16,11 +15,37 @@ const sendOTPtoemail = async(email) => {
     await userotp.save()
 }
 
-const validate = (params) =>{
-    if(!testEmailvalid(params.email))
-        console.log("Not a IIITN User !!");
+const validateUser = (params) =>{
+    if(EmailHandler.testEmailiiiTNvalid(params.email))
+        return true
+    console.log("Im returning false")
+    return false
+}
+
+const validatePassword = (params) =>{
+
+    if(params.password != params.confirm_password)
+        return false
+
+    const password = params.password
+    var strength = 0
+    if (password.match(/[a-z]+/))
+        strength += 1
+    if (password.match(/[A-Z]+/)) 
+        strength += 1
+    if (password.match(/[0-9]+/)) 
+        strength += 1
+    if (password.match(/[$@#&!]+/)) 
+        strength += 1
+      
+    if (password.length >= 8 && strength == 4)
+        return true
+    
+    return false
 }
 
 module.exports = {
-    sendOTPtoemail
+    sendOTPtoemail,
+    validateUser,
+    validatePassword
 }

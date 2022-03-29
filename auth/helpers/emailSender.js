@@ -11,10 +11,8 @@ const transporter = nodemailer.createTransport({
 
 const testEmailiiiTNvalid = (email) => {
 
-    if(validator.validate(email)){
-        if(email.includes("iiitn.ac.in"))
-            return true;
-    }
+    if(email.includes("iiitn.ac.in"))
+        return true;
     return false;
 }
 

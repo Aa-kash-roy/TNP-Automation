@@ -114,6 +114,7 @@ const StudentDetails = new Schema({
     },
     resume: {
         type: Buffer
+
     }
 })
 

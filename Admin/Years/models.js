@@ -40,6 +40,10 @@ const StudentInfo = new Schema({
             validator: g => g === 'M' || g === 'F',
             message: props => `Gender must be either M or F`
         }
+    },
+    email: {
+        type: String,
+        required: true
     }
 })
 
