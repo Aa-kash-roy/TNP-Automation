@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html>
     <body>
-    <div id="body"> <%- reactApp %> </div>
-    <script src="/bundles/test.js" charset="utf-8"></script>
-    <script src="/bundles/vendor.js" charset="utf-8"></script>
+        <div>
+            <%- number %> <br/>
+            <button onClick="add()" type="button">Click Me</button>
+            <p><%- numberstate%></p>
+        </div>
+
+        <script>
+            function add(){
+                console.log("clicked")
+            }
+        </script>
     </body>
 </html>

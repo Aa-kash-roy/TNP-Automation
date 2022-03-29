@@ -13,12 +13,6 @@ const StudentInfo = new Schema({
         required: true,
         maxlength: maxNameLength
     },
-    mobile: {
-        type: String,
-        required: true,
-        minlength: 10,
-        maxlength: 10
-    },
     cgpa: {
         type: Number,
         required: true
@@ -53,8 +47,7 @@ const StudentInfo = new Schema({
 //TO DO: LOOK INTO DATE TYPE
 const StudentInternship = new Schema({
     internshipCompleted: {
-        type: Boolean,
-        required: true
+        type: String,
     },
     company: {
         type: String,
@@ -88,8 +81,7 @@ const StudentInternship = new Schema({
 //TO DO: ADD FIELD FOR OFFER LETTER
 const StudentPlacement = new Schema({
     isPlaced: {
-        type: Boolean,
-        required: true
+        type: String,
     },
     company: {
         type: String,

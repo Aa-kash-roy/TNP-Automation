@@ -25,7 +25,7 @@ router.get('/:id', async (req, res, next) => {
         
                     studentInfo:{
                         name: coredb.studentInfo.name,
-                        mobile: coredb.studentInfo.mobile,
+                        mobile: "",
                         cgpa: coredb.studentInfo.cgpa,
                         address: "",
                         semester: coredb.studentInfo.semester,
