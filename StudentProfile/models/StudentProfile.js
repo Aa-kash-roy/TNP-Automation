@@ -112,6 +112,10 @@ const StudentDetails = new Schema({
     isPlaced: {
         type: Boolean,
         required: true
+    },
+    resume: {
+        data: Buffer,
+        contentType: String
     }
 })
 
