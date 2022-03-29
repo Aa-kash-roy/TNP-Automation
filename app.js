@@ -62,10 +62,6 @@ app.use('/admin/newplacement', newplacement)
 app.use('/', yeardisplay)
 app.use('/admin/companysearch', admincompanysearch)
 app.use('/admin/placementreports', placementreports)
-<<<<<<< HEAD
-
-=======
->>>>>>> a1a57bb7fec0bd7b53dc98d2ccb1085f5be61200
 
 // connect to the database
 

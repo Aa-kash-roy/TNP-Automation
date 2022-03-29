@@ -37,16 +37,16 @@ router.post('/', upload.any('attachments'), async (req, res, next) => {
 
     try{
 
-        var recipients = ["bt18cse036@iiitn.ac.in", "bt18cse036@iiitn.ac.in"]
-        // if(typeof(req.body.year) == "string"){
-        //     recipients = recipients.concat(await getRecipientsFromYear(req.body.year))
-        // }
-        // else{
-        //     const years = req.body.year
-        //     for(const year of years) {
-        //         recipients = recipients.concat(await getRecipientsFromYear(year))
-        //     }
-        // }
+        var recipients = []
+        if(typeof(req.body.year) == "string"){
+            recipients = recipients.concat(await getRecipientsFromYear(req.body.year))
+        }
+        else{
+            const years = req.body.year
+            for(const year of years) {
+                recipients = recipients.concat(await getRecipientsFromYear(year))
+            }
+        }
         
         console.log(recipients)
 
