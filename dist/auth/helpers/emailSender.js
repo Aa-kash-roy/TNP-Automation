@@ -1,14 +1,14 @@
 "use strict";
 
-var _config = require("../../config");
+// var _config = require("../../config");
 
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: _config.EMAIL,
-    pass: _config.EMAIL_PASSWORD
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PASSWORD
   }
 });
 

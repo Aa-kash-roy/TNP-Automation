@@ -22,7 +22,7 @@ var _bodyParser = _interopRequireDefault(require("body-parser"));
 
 var _mongoose = _interopRequireDefault(require("mongoose"));
 
-var _config = require("./config");
+// var _config = require("./config");
 
 var _TestFun;
 
@@ -64,7 +64,7 @@ app.use('/users', users);
 app.use('/student', student);
 app.use('/company', company);
 app.use('/practice', practice);
-// app.use('/', test);
+app.use('/', test);
 app.use('/placements', placement); //admin views
 
 app.use('/admin', adminlanding);
@@ -76,7 +76,7 @@ app.use('/admin/companysearch', admincompanysearch);
 app.use('/admin/placementreports', placementreports); // connect to the database
 
 const mongoDbConnect = () => {
-  return _mongoose.default.connect(_config.MONGO_URL);
+  return _mongoose.default.connect(process.env.MONGO_URL);
 }; //initialize dummy data
 
 

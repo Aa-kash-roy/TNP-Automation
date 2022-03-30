@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 
 var _jsx2 = _interopRequireDefault(require("@babel/runtime/helpers/jsx"));
 
-var _config = require("../../config");
+// var _config = require("../../config");
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -33,7 +33,7 @@ const emailid = 'bt18cse030@iiitn.ac.in';
 
 const createMail = (emailid, subject, body, attachments) => {
   const message = {
-    from: _config.EMAIL,
+    from: process.env.EMAIL,
     to: emailid,
     subject: subject,
     html: body,
