@@ -80,7 +80,7 @@ export default function StudentProfile(props){
         <StudentHeader/>
         
         <div className="student-profile-container04">
-          <form className="student-profile-form" action={"/student/"+props?.record?.enrollmentNumber+"/edit"} method="GET">
+          <form className="student-profile-form" action={"/student/resume/" + props.record.enrollmentNumber} method="POST">
             <div className="student-profile-container05">
               <div className="student-profile-profile-container">
                 <img
@@ -133,15 +133,19 @@ export default function StudentProfile(props){
                 </div>
               </div>
 
-              <button className="student-profile-button1 button">
-                <span className="student-profile-text42">
-                  EDIT PROFILE
-                </span>
+              <a href={"/student/"+ props.record.enrollmentNumber +"/edit"}>
+
+              <button className="student-profile-button1 button" type="button">
+                  <span className="student-profile-text42">
+                    EDIT PROFILE
+                  </span>
               </button>
+              </a>
 
-              
-
-
+              <button className="student-profile-button2 button">
+                  <span className="student-profile-text43">DOWNLOAD RESUME</span>
+              </button>
+          
             </div>
           </form>
 
