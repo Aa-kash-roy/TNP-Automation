@@ -102,6 +102,7 @@ const start = async () => {
   await mongoDbConnect();
   console.log("Database connected !!");
   app.listen(3001 || process.env.PORT, function () {
+    console.log(process.env.PORT)
     console.log('Server is running at port 3001');
   });
 };
