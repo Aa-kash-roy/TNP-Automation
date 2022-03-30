@@ -13,7 +13,6 @@ import { newPlacementData } from "./dummydata/newplacements.js"
 
 import bodyParser from "body-parser"
 import mongoose from "mongoose"
-import {PORT, MONGO_URL} from "./config"
 
 
 //user views
@@ -50,7 +49,7 @@ app.use('/users', users)
 app.use('/student', student)
 app.use('/company', company)
 app.use('/practice', practice)
-app.use('/', test)
+// app.use('/', test)
 app.use('/placements', placement)
 
 
@@ -66,7 +65,7 @@ app.use('/admin/placementreports', placementreports)
 // connect to the database
 
 const mongoDbConnect = () =>{
-    return mongoose.connect(MONGO_URL);
+    return mongoose.connect(process.env.MONGO_URL);
 }
 
 
@@ -96,7 +95,7 @@ const start = async() =>{
 
     await mongoDbConnect()
     console.log("Database connected !!")
-    app.listen(3001, function () {
+    app.listen(process.env.port || 3001, function () {
         console.log('Server is running at port 3001')
     })
 }

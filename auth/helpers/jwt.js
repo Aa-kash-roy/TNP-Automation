@@ -2,9 +2,8 @@ const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
 
 // get password vars from .env file
-dotenv.config();
+// dotenv.config();
 
-const TOKEN_SECRET = "abfiudsfnefiuhewof9jeiwkfniewufgiwjhgfiuwg"
 async function authenticateToken(req, res, next) {
     const token = await req.headers['form-data']
     console.log(token)

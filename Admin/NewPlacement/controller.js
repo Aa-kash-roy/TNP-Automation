@@ -2,7 +2,6 @@ import React from "react"
 import express from "express"
 import {renderToString} from "react-dom/server.js"
 import NewPlacement from "../../views/admin/newplacement.jsx"
-import {EMAIL, EMAIL_PASSWORD} from "../../config"
 import multer from "multer"
 import newplacements from "./models.js"
 import xlsx from "xlsx"
@@ -19,7 +18,7 @@ const emailid = 'bt18cse030@iiitn.ac.in'
 const createMail = (emailid, subject, body, attachments) => {
 
     const message = {
-        from: EMAIL,
+        from: process.env.EMAIL,
         to: emailid,
         subject: subject,
         html: body,

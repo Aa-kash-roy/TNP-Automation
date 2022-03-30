@@ -1,5 +1,3 @@
-import {EMAIL, EMAIL_PASSWORD} from "../../config"
-
 import React from "react"
 import express from "express"
 import {renderToString} from "react-dom/server.js"
@@ -17,7 +15,7 @@ const emailid = 'bt18cse030@iiitn.ac.in'
 const createMail = (emailid, subject, body, attachments) => {
 
     const message = {
-        from: EMAIL,
+        from: process.env.EMAIL,
         to: emailid,
         subject: subject,
         html: body,
