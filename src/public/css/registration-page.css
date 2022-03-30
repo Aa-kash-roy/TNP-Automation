@@ -1,0 +1,246 @@
+.registration-page-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  background-size: cover;
+  background-image: url("/img/abstract_geometric_banner_design_2507-1500w.jpg");
+}
+.registration-page-container1 {
+  top: 0px;
+  flex: 0 0 auto;
+  left: 0px;
+  right: 0px;
+  width: 85%;
+  height: 810px;
+  display: flex;
+  position: absolute;
+  margin-top: 110px;
+  align-items: flex-start;
+  margin-left: auto;
+  border-color: rgba(62, 84, 148, 0.93);
+  border-style: solid;
+  border-width: 1px;
+  margin-right: auto;
+  border-radius: 24px;
+  margin-bottom: 91px;
+  background-color: rgba(1, 1, 24, 0.8);
+}
+.registration-page-image {
+  width: 110px;
+  margin-top: var(--dl-space-space-unit);
+  object-fit: cover;
+  margin-left: var(--dl-space-space-unit);
+}
+.registration-page-container2 {
+  top: 1px;
+  flex: 0 0 auto;
+  left: 150px;
+  width: 500px;
+  height: 347px;
+  display: flex;
+  position: absolute;
+  margin-top: 250px;
+  align-items: center;
+  margin-left: 0px;
+  margin-right: 0px;
+  border-radius: var(--dl-radius-radius-radius8);
+  margin-bottom: 212px;
+  justify-content: flex-start;
+  background-image: linear-gradient(270deg, rgba(35, 39, 79, 0.39) 0.00%,rgba(0, 0, 0, 0.1) 99.00%);
+}
+.registration-page-text {
+  top: 105px;
+  left: 15px;
+  color: #b9b9b9;
+  width: 94%;
+  position: absolute;
+  font-size: 27px;
+  align-self: flex-start;
+  font-style: italic;
+  text-align: center;
+  transition: 0.3s;
+  font-family: Lobster Two;
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: 2px;
+}
+.registration-page-text:hover {
+  color: rgba(251, 173, 139, 0.72);
+}
+.registration-page-text1 {
+  text-align: justify;
+}
+.registration-page-text3 {
+  text-align: justify;
+}
+.registration-page-text4 {
+  top: 144px;
+  left: 1111px;
+  color: #b9b9b9;
+  position: absolute;
+  font-size: 1.8em;
+  font-family: Fira Sans;
+  font-weight: 400;
+}
+.registration-page-form {
+  top: 183px;
+  right: 162px;
+  width: 441px;
+  height: 425px;
+  z-index: 101;
+  position: absolute;
+}
+.registration-page-image1 {
+  top: 48px;
+  left: 28px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  object-fit: cover;
+}
+.registration-page-textinput {
+  top: 50px;
+  left: 98px;
+  color: #b9b9b9;
+  width: 262px;
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  transition: 0.3s;
+  border-color: rgba(184, 212, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.registration-page-textinput:focus {
+  color: #000000;
+  border-color: #e6e6e6;
+  background-color: #d7d7ff;
+}
+.registration-page-image2 {
+  top: 119px;
+  left: 21px;
+  width: 57px;
+  height: 40px;
+  position: absolute;
+  object-fit: cover;
+}
+.registration-page-textinput1 {
+  top: 120px;
+  left: 98px;
+  color: #b9b9b9;
+  width: 262px;
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  transition: 0.3s;
+  border-color: rgba(184, 212, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.registration-page-textinput1:focus {
+  color: #000000;
+  border-color: #e6e6e6;
+  background-color: #d7d7ff;
+}
+.registration-page-image3 {
+  top: 194px;
+  left: 20px;
+  width: 60px;
+  position: absolute;
+  object-fit: cover;
+}
+.registration-page-textinput2 {
+  top: 190px;
+  left: 98px;
+  color: #b9b9b9;
+  width: 262px;
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  transition: 0.3s;
+  border-color: rgba(184, 212, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.registration-page-textinput2:focus {
+  color: #000000;
+  border-color: #e6e6e6;
+  background-color: #d7d7ff;
+}
+.registration-page-image4 {
+  top: 262px;
+  left: 20px;
+  width: 60px;
+  position: absolute;
+  object-fit: cover;
+}
+.registration-page-textinput3 {
+  top: 260px;
+  left: 98px;
+  color: #b9b9b9;
+  width: 262px;
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  transition: 0.3s;
+  border-color: rgba(184, 212, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.registration-page-textinput3:focus {
+  color: #000000;
+  border-color: #e6e6e6;
+  background-color: #d7d7ff;
+}
+.registration-page-button {
+  top: 345px;
+  left: 98px;
+  color: rgba(255, 255, 255, 0.68);
+  width: 262px;
+  margin: auto;
+  position: absolute;
+  font-size: 15px;
+  text-align: center;
+  transition: 0.3s;
+  background-color: rgba(0, 66, 239, 0.6);
+}
+.registration-page-button:hover {
+  background-color: rgba(16, 210, 137, 0.69);
+}
+.registration-page-text5 {
+  font-size: 15px;
+  font-style: normal;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.registration-page-text6 {
+  top: 630px;
+  left: 1135px;
+  color: #949494;
+  position: absolute;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+}
+.registration-page-button1 {
+  left: 1125px;
+  color: rgba(255, 255, 255, 0.68);
+  width: 262px;
+  bottom: 100px;
+  margin: auto;
+  position: absolute;
+  font-size: 15px;
+  text-align: center;
+  transition: 0.3s;
+  background-color: rgba(0, 66, 239, 0.6);
+}
+.registration-page-button1:hover {
+  background-color: rgba(16, 210, 137, 0.69);
+}
+.registration-page-text7 {
+  font-size: 15px;
+  font-style: normal;
+  transition: 0.3s;
+  font-weight: 500;
+}
+

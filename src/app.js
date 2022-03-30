@@ -2,7 +2,7 @@ import React from "react"
 import express from "express"
 import {renderToString} from "react-dom/server.js"
 
-import TestFun from "./views/portal.jsx"
+// import TestFun from "./views/portal.jsx"
 
 
 import { testStudentProfileData } from "./dummydata/students.js"
