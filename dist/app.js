@@ -64,7 +64,7 @@ app.use('/users', users);
 app.use('/student', student);
 app.use('/company', company);
 app.use('/practice', practice);
-app.use('/', test);
+// app.use('/', test);
 app.use('/placements', placement); //admin views
 
 app.use('/admin', adminlanding);
