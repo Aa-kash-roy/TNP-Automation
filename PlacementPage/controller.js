@@ -6,6 +6,7 @@ import newplacements, { findOne } from "../Admin/NewPlacement/models.js"
 import StudentProfileModel from "../StudentProfile/models/StudentProfile.js"
 import xlsx from "xlsx"
 import corestudentprofiles from "../Admin/Years/models.js"
+import fs from "fs"
 
 const router = express.Router();
 
@@ -37,6 +38,16 @@ router.post('/', async (req, res, next) => {
             numberOfApplications: 1
         }}, {new: true}).lean()
         console.log(jobDetails)
+        console.log(coreDetails)
+
+        const resumeSourcePath = "./StudentProfile/resumes/" + enrollmentNumber + ".pdf" 
+        const resumeDestPath = './Applications/' + jobDetails.name + " " + jobDetails.role + " " + jobDetails._id.toString() + "/resumes/" + enrollmentNumber + ".pdf"
+ 
+        let cond1 = coreDetails.studentInfo.cgpa >= jobDetails.minCGPA
+        let cond2 = coreDetails.backlogs <= jobDetails.maxBacklogs
+        let cond3 = jobDetails.gender.includes(coreDetails.studentInfo.gender)
+
+        
 
         
 
@@ -56,6 +67,13 @@ router.post('/', async (req, res, next) => {
         ]], {origin: "A"+(jobDetails.numberOfApplications+1)})
         file.Sheets[file.SheetNames[0]] = sheet;
         xlsx.writeFile(file, path);
+
+
+        fs.copyFile(resumeSourcePath, resumeDestPath, (err) => {
+            if (err) throw err;
+            console.log('source.txt was copied to destination.txt');
+        });
+
 
 
         res.redirect("/placements")

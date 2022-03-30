@@ -160,7 +160,7 @@ export default function NewPlacement(){
                     type="checkbox"
                     id="male"
                     name="gender"
-                    value="male"
+                    value="M"
                     className="admin-company-radiobutton"
                   />
                   <span className="admin-company-text06">Male</span>
@@ -168,7 +168,7 @@ export default function NewPlacement(){
                     type="checkbox"
                     id="female"
                     name="gender"
-                    value="female"
+                    value="F"
                     className="admin-company-radiobutton1"
                   />
                   <span className="admin-company-text07">Female</span>
@@ -218,7 +218,7 @@ export default function NewPlacement(){
                     type="checkbox"
                     id="3rdyear"
                     name="year"
-                    value="third"
+                    value="3"
                     className="admin-company-checkbox2"
                   />
                   <span className="admin-company-text15">3rd Year</span>
@@ -226,7 +226,7 @@ export default function NewPlacement(){
                     type="checkbox"
                     name="year"
                     id="4thyear"
-                    value="fourth"
+                    value="4"
                     className="admin-company-checkbox3"
                   />
                   <span className="admin-company-text16">4th Year</span>
