@@ -3,3 +3,4 @@ for contact Us page => take name email subject message => use email and name to 
 and send a mail to admin using info-iiitn-tnp-admin to itself or may be specified mail.
 
 2. from Admin page send a mail to list of students.
+    "webpack": "webpack -w",
