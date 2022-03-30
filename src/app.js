@@ -66,7 +66,7 @@ app.use('/admin/placementreports', placementreports)
 // connect to the database
 
 const mongoDbConnect = () =>{
-    return mongoose.connect(MONGO_URL);
+    return mongoose.connect(process.env.MONGO_URL);
 }
 
 
