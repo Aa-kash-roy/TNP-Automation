@@ -1122,3 +1122,35 @@
     padding: 16px;
   }
 }
+
+.student-profile-button2 {
+  left: 150px;
+  bottom: 0px;
+  position: absolute;
+  font-size: 13px;
+  font-style: normal;
+  transition: 0.3s;
+  font-weight: 600;
+  margin-left: 33px;
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+  background-color: rgba(25, 186, 210, 0.33);
+}
+.student-profile-button2:hover {
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
+  background-color: rgba(17, 210, 55, 0.45);
+}
+.student-profile-text43 {
+  font-weight: 500;
+  letter-spacing: 0.75px;
+}
+.student-profile-textinput {
+  left: 200px;
+  bottom: 0px;
+  position: absolute;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  background-color: rgba(168, 168, 168, 0.1);
+}

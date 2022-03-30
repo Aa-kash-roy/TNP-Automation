@@ -6,9 +6,9 @@ export async function newPlacementData(){
         const refresh = await newplacements.deleteMany({}) //refresh the table on each restart
 
         const studentProfile = await newplacements.create({
-            gender: ['Female'],
+            gender: ['F'],
             role: 'Intern',
-            eligibleYears: ['third'],
+            eligibleYears: ['3'],
             name: 'Google',
             ctc: "1200000",
             minCGPA: 9.5,
@@ -17,9 +17,9 @@ export async function newPlacementData(){
         })
 
         const studentProfile2 = await newplacements.create({
-            gender: ['Female', 'Male'],
+            gender: ['F', 'M'],
             role: 'Fulltime',
-            eligibleYears: ['fourth'],
+            eligibleYears: ['4'],
             name: 'Microsoft',
             ctc: "1500000",
             minCGPA: 9,
@@ -28,9 +28,9 @@ export async function newPlacementData(){
         })
 
         const studentProfile3 = await newplacements.create({
-            gender: ['Female', 'Male'],
+            gender: ['F', 'M'],
             role: 'Intern',
-            eligibleYears: ['fourth'],
+            eligibleYears: ['4'],
             name: 'Linkedin',
             ctc: "1500000",
             minCGPA: 9,

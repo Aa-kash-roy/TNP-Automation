@@ -106,14 +106,14 @@ router.post('/', upload.any('attachments'), async (req, res, next) => {
             attachments.push({filename:req.files[i].originalname, content: req.files[i].buffer})
         }
 
-        // const email = await createMail(emailid, req.body['message'], req.body['subject'], attachments)
+        const email = await createMail(emailid, req.body['message'], req.body['subject'], attachments)
         // await EmailSender(email)
     }
     catch(e){
         console.log(e)
     }
 
-    res.redirect('/admin/newplacement')
+    res.redirect('/placements')
 })
 
 module.exports = router;

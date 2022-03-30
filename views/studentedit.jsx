@@ -117,9 +117,6 @@ export default function StudentProfileEdit(props){
               <div className="student-profile-container12">
                 {props?.record?.internships.map((item, index) => {return experienceRow(item, index)})}
               </div>
-              {/* <div className="student-profile-container08">
-                <input type="file" name="resume"/>
-              </div> */}
             </div>
             <div className="student-profile-container16">
               <div className="student-profile-container17">
@@ -145,6 +142,13 @@ export default function StudentProfileEdit(props){
                   FINISH EDIT
                 </span>
               </button>
+              <input
+                type="file"
+                placeholder="placeholder"
+                className="student-profile-textinput input"
+                name="resume"
+                accept="application/pdf"
+              />
 
               
 
