@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "transpile": "npx babel-node --presets @babel/preset-env app.js",
-    "start": "nodemon --exec npm run transpile",
-    "webpack": "webpack -w"
+    "start": "NODE_ENV=development npm run transpile",
+    "babel-production": "NODE_ENV=production babel --out-dir dist src",
+    "build-server": "babel --presets @babel/preset-react -d ./build ./src -s"
   },
   "repository": {
     "type": "git",
@@ -20,8 +21,11 @@
   },
   "homepage": "https://github.com/Aa-kash-roy/TNP-automation#readme",
   "dependencies": {
+    "@babel/cli": "^7.17.6",
     "@babel/core": "^7.13.8",
     "@babel/node": "^7.16.8",
+    "@babel/plugin-transform-react-constant-elements": "^7.17.6",
+    "@babel/plugin-transform-react-inline-elements": "^7.16.7",
     "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.13.9",
@@ -30,6 +34,7 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@material-ui/pickers": "^3.3.10",
     "babel-loader": "^8.2.2",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
     "compression": "^1.7.4",
@@ -56,14 +61,6 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.8",
-    "@babel/preset-env": "^7.13.9",
-    "@babel/preset-react": "^7.12.13",
-    "babel-loader": "^8.2.2",
-    "nodemon": "^2.0.15",
-    "react-hot-loader": "^4.13.0",
-    "webpack": "^5.24.3",
-    "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2"
+    "nodemon": "^2.0.15"
   }
 }
