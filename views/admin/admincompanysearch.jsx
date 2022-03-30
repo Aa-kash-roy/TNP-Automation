@@ -92,10 +92,10 @@ export default function AdminCompanySearch(props){
               <nav
                 className="navigation-links-nav navigation-links-root-class-name24"
               >
-                <span className="navigation-links-text"><span>Home</span></span>
-                <span className="navigation-links-text1"><span>Company</span></span>
+                <span className="navigation-links-text"><span><a href="/">Home</a></span></span>
+                <span className="navigation-links-text1"><span><a href="/company/search">Company</a></span></span>
                 <span className="navigation-links-text2">
-                  <span>Placements</span>
+                  <span><a href="/placements">Placements</a></span>
                 </span>
               </nav>
             </div>
