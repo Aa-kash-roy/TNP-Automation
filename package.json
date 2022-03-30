@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "transpile": "babel-node ./src/app.js",
-    "start": "npm run transpile",
+    "start": "node dist/app.js",
     "webpack": "webpack -w",
     "babel-production": "NODE_ENV=production babel --out-dir dist src",
     "build-server": "babel --presets @babel/preset-react -d ./build ./src -s"
