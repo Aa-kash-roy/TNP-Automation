@@ -80,7 +80,7 @@ router.post('/login/setpassword', (req, res) =>{
 router.post('/login', (req, res, next) => {
     const { email, password} = req.body;
     userServices.login({email, password}).then(user => {
-        // res.redirect('/student/BT18CSE031')
+        res.redirect('/student/BT18CSE031')
         // next();
         console.log(user);
     }
