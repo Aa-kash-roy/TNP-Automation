@@ -47,6 +47,7 @@ router.post('/', upload.single('newdb'), async (req, res, next) => {
             {
                 const temp = xlsx.utils.sheet_to_json(file.Sheets[file.SheetNames[i]])
                 const semester = parseInt(file.SheetNames[i].charAt(9))
+                console.log(file.SheetNames[i])
                 for(let j=0; j<temp.length; j++){
                     const cr = await corestudentprofiles.create({
                         enrollmentNumber: temp[j]['Roll. No.'],
