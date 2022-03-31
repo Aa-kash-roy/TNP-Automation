@@ -20,8 +20,9 @@ const users = require('./auth/controllers/UserController.js')
 const student = require('./StudentProfile/controllers/StudentProfileController.js')
 const company = require('./CompanyProfile/controllers/CompanyProfileController.js')
 const practice = require('./CodingPractice/controller/codingHandler.js')
-const test = require('./views/test.js')
+// const test = require('./views/test.js')
 const placement = require('./PlacementPage/controller.js')
+const userlanding = require('./UserLanding/controller.js')
 
 
 //admin views
@@ -51,6 +52,7 @@ app.use('/company', company)
 app.use('/practice', practice)
 // app.use('/', test)
 app.use('/placements', placement)
+app.use('/', userlanding)
 
 
 //admin views

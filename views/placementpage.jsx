@@ -12,7 +12,7 @@ function notApplied(item){
 
 function applied(item){
   return(
-    <div className="placement-page-button1 button">
+    <div className="applied-button1 button">
       <span>
         <span>APPLIED</span>
       </span>

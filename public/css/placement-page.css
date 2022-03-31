@@ -608,4 +608,16 @@
       padding: 16px;
     }
   }
+
+  .applied-button1 {
+    top: 15px;
+    right: 45px;
+    position: absolute;
+    font-size: 15px;
+    align-self: center;
+    transition: 0.3s;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    background-color: rgba(25, 186, 210, 0.48);
+  }
   
