@@ -183,6 +183,13 @@ export default function AdminLanding(){
               />
             </div>
           </form>
+          <div className="admin-landing-page-container12">
+          <a href="/admin/companysearch">
+            <button type="submit" className="admin-landing-page-button8 button">
+              Company Contact
+            </button>
+            </a>
+          </div>
         </div>
       </div>
     </div>
