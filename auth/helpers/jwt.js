@@ -6,27 +6,34 @@ dotenv.config();
 
 const TOKEN_SECRET = "abfiudsfnefiuhewof9jeiwkfniewufgiwjhgfiuwg"
 async function authenticateToken(req, res, next) {
-    const token = await req.headers['form-data']
+    // const token = await req.headers['authorization']
+    const authHeader = req.headers.cookie
+    
+    const token = await authHeader && authHeader.split('=')[1]
     console.log(token)
-    token = await authHeader && authHeader.split(' ')[1]
-
+    
     if (token == null){
         console.log("Token is none");
-        return res.sendStatus(401)
+        res.status(401)
     }
 
     jwt.verify(token, TOKEN_SECRET, (err, user) => {
         if (err){ 
             console.log("token didn't matched");
-            return res.sendStatus(403)
+            res.status(403)
         }
         req.user = user
-        next()
+        res.status(200);
     })
+    next();
 }
 
 function generateAccessToken(username) {
-    return jwt.sign({data: username}, TOKEN_SECRET, { expiresIn: '1h' });
+    username = username.split('@')[0]
+    username = username.toUpperCase();
+    const user = {name: username}
+    const token = jwt.sign(user, TOKEN_SECRET, { expiresIn: '1h' });
+    return token;
 }
 
 module.exports = {

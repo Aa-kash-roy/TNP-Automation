@@ -21,9 +21,11 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage: storage});
 
-router.get('/:id', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     try{
-        const enrollmentNumber = req.params.id;
+        var enrollmentNumber = req.user.name;
+        console.log(enrollmentNumber)
+        enrollmentNumber="BT18CSE031"
         const coredb = await corestudentprofiles.findOne({enrollmentNumber: enrollmentNumber}).lean()
         const studentdb = await StudentProfileModel.findOne({enrollmentNumber: enrollmentNumber}).lean()
         if(coredb){

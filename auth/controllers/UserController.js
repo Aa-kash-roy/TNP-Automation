@@ -80,6 +80,8 @@ router.post('/login/setpassword', (req, res) =>{
 router.post('/login', (req, res, next) => {
     const { email, password} = req.body;
     userServices.login({email, password}).then(user => {
+        console.log(user.token)
+        res.cookie('token', user.token, { httpOnly: true });
         res.redirect('/student/BT18CSE031')
         // next();
         console.log(user);
