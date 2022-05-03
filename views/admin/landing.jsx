@@ -190,7 +190,17 @@ export default function AdminLanding(){
             </button>
             </a>
           </div>
+
+          <div className="admin-landing-page-container12">
+          <a href="/admin/report">
+            <button type="submit" className="admin-landing-page-button8 button">
+              Generate Report
+            </button>
+            </a>
+          </div>
+
         </div>
+        
       </div>
     </div>
     )
