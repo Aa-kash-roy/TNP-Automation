@@ -96,7 +96,7 @@ const StudentPlacement = new Schema({
         maxlength: maxDesignationLength
     },
     compensation: {
-        type: String,
+        type: Number,
     },
     offerLetter: {
         type: Buffer
