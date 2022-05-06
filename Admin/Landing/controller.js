@@ -231,9 +231,9 @@ router.get('/report', async (req, res, next) => {
         let data3 = [internPending.length, internCompleted.length, placementPending.length, placementPlaced.length]
         let labels3 = ["Pending Internship", "Completed Internship", "Pending Placement", "Placed"] 
 
-        console.log(labels)
-        console.log(data)
-        console.log(value3)
+        // console.log(labels)
+        // console.log(data)
+        // console.log(value3)
         
         const configuration = chart1(data, labels)
         const configuration2 = chart2(data2, labels2)
@@ -243,17 +243,17 @@ router.get('/report', async (req, res, next) => {
         const imageBuffer2 = await canvasRenderService.renderToBuffer(configuration2);
         const imageBuffer3 = await canvasRenderService.renderToBuffer(configuration3);
 
-        fs.writeFileSync('/tmp/mychart.png', imageBuffer);
-        fs.writeFileSync('/tmp/mychart2.png', imageBuffer2);
-        fs.writeFileSync('/tmp/mychart3.png', imageBuffer3);
+        // fs.writeFileSync('/tmp/mychart.png', imageBuffer);
+        // fs.writeFileSync('/tmp/mychart2.png', imageBuffer2);
+        // fs.writeFileSync('/tmp/mychart3.png', imageBuffer3);
 
         var zip = new JSZip();
-        zip.file("hello.txt", "HELLO");
-        const content = await zip.generateAsync({type:"base64"})
-        const blob = b64ToBlob(content, "application/zip")
-        saveAs(blob, "example.zip");
-
-        res.redirect("/admin")
+        zip.file("Package.png", imageBuffer);
+        zip.file("Companies.png", imageBuffer2);
+        zip.file("Status.png", imageBuffer3)
+        const content = await zip.generateAsync({type:"nodebuffer"})
+        fs.writeFileSync('/tmp/Charts.zip', content)
+        res.download('/tmp/Charts.zip')
     }
     catch (e){
 
