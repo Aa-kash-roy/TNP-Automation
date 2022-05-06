@@ -106,7 +106,7 @@ const start = async() =>{
 
     await mongoDbConnect()
     console.log("Database connected !!")
-    app.listen(3001, function () {
+    app.listen(3002, function () {
         console.log('Server is running at port 3001')
     })
 }
