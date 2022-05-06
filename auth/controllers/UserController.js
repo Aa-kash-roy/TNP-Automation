@@ -10,18 +10,6 @@ router.get('/register', (req, res) => {
     })
 })
 
-router.get('/register/otpvalidation', (req, res) => {
-    res.render('otpvalidation')
-})
-
-router.get('/login', (req, res) => {
-    res.render('login')
-})
-
-router.get('login/forget-password', (req, res) => {
-    res.render('')
-})
-
 router.post('/register', async(req, res, next) => {
 
     const {password} = req.body
@@ -57,6 +45,10 @@ router.post('/register', async(req, res, next) => {
     }
 })
 
+router.get('/register/otpvalidation', (req, res) => {
+    res.render('otpvalidation')
+})
+
 router.post('/register/otpvalidation', (req, res, next) => {
 
     userServices.authenticateUser(req.body).then(
@@ -65,16 +57,8 @@ router.post('/register/otpvalidation', (req, res, next) => {
     .catch(err=> next(err))
 })
 
-router.post('/login/forget-password', (req, res) =>{
-    validateUser.sendOTPtoemail(req.body.email);
-    res.redirect('/users/login/setpassword');
-});
-
-router.post('/login/setpassword', (req, res) =>{
-    
-    userServices.setNewPassword(req.body).then(
-        res.send("Password Updated !!")
-    )
+router.get('/login', (req, res) => {
+    res.render('login')
 })
 
 router.post('/login', (req, res, next) => {
@@ -82,11 +66,33 @@ router.post('/login', (req, res, next) => {
     userServices.login({email, password}).then(user => {
         console.log(user.token)
         res.cookie('token', user.token, { httpOnly: true });
-        res.redirect('/student/BT18CSE031')
+        res.redirect('/')
         // next();
         console.log(user);
     }
     ).catch(err => next(err))
+})
+
+router.get('login/forget-password', (req, res) => {
+    // text field to take input for email !!
+    res.render('')
+})
+
+router.post('/login/forget-password', (req, res) =>{
+    validateUser.sendOTPtoemail(req.body.email);
+    res.redirect('/users/login/setpassword');
+});
+
+router.get('/login/setpassword', (req, res) =>{
+
+    // text field for email, otp, updated Password
+})
+
+router.post('/login/setpassword', (req, res) =>{
+    
+    userServices.setNewPassword(req.body).then(
+        res.redirect("/users/login")
+    )
 })
 
 
