@@ -31,4 +31,15 @@ router.get('/delete/:id', async (req, res, next) => {
     }
 })
 
+router.get('/new', async (req, res, next) => {
+    try{
+        const maxid = await companyprofiles.find().sort({age:-1}).limit(1)
+        console.log(maxid);
+        res.redirect("/admin/companysearch");
+    }
+    catch (e){
+        console.log(e)
+    }
+})
+
 module.exports = router;

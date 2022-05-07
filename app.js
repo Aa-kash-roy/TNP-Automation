@@ -34,7 +34,7 @@ const newplacement = require("./Admin/NewPlacement/controller.js")
 const admincompanysearch = require("./Admin/CompanySearch/controller.js")
 const placementreports = require("./Admin/PlacementReports/controller.js")
 const companyedit = require("./Admin/CompanyEdit/controller.js")
-
+const adminplacements = require("./Admin/AdminPlacements/controller.js")
 
 
 
@@ -67,6 +67,8 @@ app.use('/', yeardisplay)
 app.use('/admin/companysearch', admincompanysearch)
 app.use('/admin/placementreports', placementreports)
 app.use('/admin/edit', companyedit)
+app.use('/admin/placements', adminplacements)
+
 
 // connect to the database
 

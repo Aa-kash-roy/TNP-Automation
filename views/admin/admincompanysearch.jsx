@@ -188,8 +188,12 @@ export default function AdminCompanySearch(props){
             <button className="admin-company-addremove-button01 button">
               <span className="admin-company-addremove-text">SEARCH</span>
             </button>
-            <button className="admin-company-addremove-button02 button">
-              <span className="admin-company-addremove-text01">ADD COMPANY</span>
+            <button className="admin-company-addremove-button02 button" type="button" name="addcompany" value="addcompany">
+              <a href="/admin/edit/new">
+                <span className="admin-company-addremove-text01">
+                  ADD COMPANY
+                </span>
+              </a>
             </button>
           </div>
           <div className="admin-company-addremove-container06">

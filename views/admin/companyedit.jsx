@@ -11,8 +11,25 @@ function yearDataRow(item){
   )
 }
 
-export default function CompanyEdit(props){
+function newRow(item){
+    return (
+      <div className="company-profile-container14">
+          <span className="company-profile-text08">
+            <input size="10" name="newyear"/>
+          </span>
+        <span className="company-profile-text09">
+            <input size="10" name="newnumber"/>
+        </span>
+        <span className="company-profile-text10">
+            <input size="10" name="newctc"/>
+        </span>
+      </div>
+    )
+  }
 
+export default function CompanyEdit(props){
+    console.log("BB")
+    console.log(props)
     return(
             
       <div className="company-profile-container">
@@ -42,7 +59,7 @@ export default function CompanyEdit(props){
                   />
                   <span className="company-profile-text01">Website</span>
                   <span className="company-profile-text02">
-                    {props.record.companySocial.website.name}
+                    <input defaultValue={props.record.companySocial.website.name} size="10" name="companywebsite"/>
                   </span>
                 </div>
                 <div className="company-profile-container10">
@@ -52,7 +69,8 @@ export default function CompanyEdit(props){
                     className="company-profile-image4"
                   />
                   <span className="company-profile-text03">Linkedin</span>
-                  <span className="company-profile-text04">{props.record.companySocial.linkedin.name}</span>
+                  <span className="company-profile-text04">
+                      <input defaultValue={props.record.companySocial.linkedin.name} size="10" name="companylinkedin"/></span>
                 </div>
               </div>
             </div>
@@ -69,9 +87,22 @@ export default function CompanyEdit(props){
                 </div>
                 
                 {props.record.placementData.map(item => {return yearDataRow(item)})}
-
+                {newRow()}
               </div>
+              
             </div>
+            {/* <div class="company profile-container20">
+              <button class="company profile-button1 button">
+                <span class="company profile-text23">FINSIH EDIT</span>
+              </button>
+              <input
+                type="file"
+                id="myfile"
+                name="myfile"
+                placeholder="placeholder"
+                class="company profile-textinput input"
+              />
+            </div> */}
           </form>
         </div>
       </div>
