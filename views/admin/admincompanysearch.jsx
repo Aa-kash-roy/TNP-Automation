@@ -25,11 +25,11 @@ function companyRow(item, index){
         <span className="admin-company-addremove-text04"><a href={"//"+item.website}>{item.website}</a></span>
         <span className="admin-company-addremove-text05">{item.email}</span>
         <span className="admin-company-addremove-text06"><a href={"/company/"+item.id}>Company Profile</a></span>
-        <button className="admin-company-addremove-button03 button">
-          EDIT
+        <button className="admin-company-addremove-button03 button" type="button" name="editcompany" value={item.id}>
+          <a href={"/admin/edit/" + item.id}>EDIT</a>
         </button>
-        <button className="admin-company-addremove-button04 button">
-          DELETE
+        <button className="admin-company-addremove-button04 button" type="button" name="editcompany" value={item.id}>
+          <a href={"/admin/edit/delete/" + item.id}>DELETE</a>
         </button>
       </div>
   )
