@@ -19,19 +19,22 @@ async function authenticateToken(req, res, next) {
 
     jwt.verify(token, TOKEN_SECRET, (err, user) => {
         if (err){ 
-            console.log("token didn't matched");
-            res.status(403)
+            res.redirect('users/login')
         }
         req.user = user
         res.status(200);
     })
-    next();
+    // next();
 }
 
 function generateAccessToken(username) {
     username = username.split('@')[0]
     username = username.toUpperCase();
-    const user = {name: username}
+
+    var user = {name: username, isAdmin: false}
+    if(username.includes("admin")){
+        user.isAdmin = true
+    }
     const token = jwt.sign(user, TOKEN_SECRET, { expiresIn: '1h' });
     return token;
 }

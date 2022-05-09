@@ -133,7 +133,7 @@ export default function StudentProfile(props){
                 </div>
               </div>
 
-              <a href={"/student/"+ props.record.enrollmentNumber +"/edit"}>
+              <a href={"/student/edit"}>
 
               <button className="student-profile-button1 button" type="button">
                   <span className="student-profile-text42">

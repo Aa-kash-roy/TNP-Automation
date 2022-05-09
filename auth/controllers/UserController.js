@@ -66,7 +66,7 @@ router.post('/login', (req, res, next) => {
     userServices.login({email, password}).then(user => {
         console.log(user.token)
         res.cookie('token', user.token, { httpOnly: true });
-        res.redirect('/')
+        res.redirect('/student')
         // next();
         console.log(user);
     }

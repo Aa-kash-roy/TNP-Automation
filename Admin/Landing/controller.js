@@ -243,15 +243,20 @@ router.get('/report', async (req, res, next) => {
         const imageBuffer2 = await canvasRenderService.renderToBuffer(configuration2);
         const imageBuffer3 = await canvasRenderService.renderToBuffer(configuration3);
 
-        fs.writeFileSync('/tmp/mychart.png', imageBuffer);
-        fs.writeFileSync('/tmp/mychart2.png', imageBuffer2);
-        fs.writeFileSync('/tmp/mychart3.png', imageBuffer3);
+        fs.writeFileSync('C:/Users/meaka/OneDrive/Desktop/mychart.png', imageBuffer);
+        // fs.writeFileSync('/tmp/mychart2.png', imageBuffer2);
+        // fs.writeFileSync('/tmp/mychart3.png', imageBuffer3);
 
         var zip = new JSZip();
         zip.file("hello.txt", "HELLO");
-        const content = await zip.generateAsync({type:"base64"})
-        const blob = b64ToBlob(content, "application/zip")
-        saveAs(blob, "example.zip");
+        zip.generateAsync({type:""}).then(function(content) {
+            // see FileSaver.js
+            saveAs(content, "example.zip");
+        });
+        
+        // const content = await zip.generateAsync({type:"nodebuffer"})
+        // // const blob = b64ToBlob(content, "application/zip")
+        // saveAs(content, "example.zip");
 
         res.redirect("/admin")
     }

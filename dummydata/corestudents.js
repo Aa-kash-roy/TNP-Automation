@@ -6,7 +6,7 @@ export async function coreStudentProfileData(){
     const refresh = await corestudentprofiles.deleteMany({}) //refresh the table on each restart
 
     const studentProfile = await corestudentprofiles.create({
-        enrollmentNumber: "BT18CSE031",
+        enrollmentNumber: "BT18CSE036",
         
         studentInfo:{
             name: "Akash Kumar",
@@ -15,7 +15,7 @@ export async function coreStudentProfileData(){
             branch: "CSE",
             passingYear: 2022,
             gender: 'F',
-            email: "bt18cse031@iiitn.ac.in"
+            email: "bt18cse036@iiitn.ac.in"
 
         },
 
