@@ -10,10 +10,10 @@ const router = express.Router();
 // const storage = multer.memoryStorage();
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
-        cb(null, "../../public/img/companies")
+        cb(null, "./public/img/companies/")
     },
     filename: function(req, file, cb){
-        cb(null, req.params.id+".png")
+        cb(null, req.body['newname'].toLowerCase()+".png")
     }
 })
 const upload = multer({ storage: storage});
@@ -32,37 +32,42 @@ router.get('/company/:id', async (req, res, next) => {
     }
 })
 
-router.post('/company/:id', upload.single('resume'), async (req, res, next) => {
+router.post('/company/:id', upload.single('logo'), async (req, res, next) => {
     try{
         
-        const companyid = req.params.id
-        const companydata = await companyprofiles.findOne({id: companyid})
+        console.log("GG")
+        console.log(req.body['newyear'])
+        if(req.body['newyear']=="" || req.body['newnumber']=="" || req.body['newctc']==""){
+            res.redirect("/admin/companysearch")
+        }
+        else{
+            const companyid = req.params.id
+            const companydata = await companyprofiles.findOne({id: companyid})
 
-        let newplacementData = companydata['placementData'];
-        newplacementData.push({
-            year: parseInt(req.body['newyear']), 
-            students: parseInt(req.body['newnumber']), 
-            ctc: parseInt(req.body['newctc'])
-        })
+            let newplacementData = companydata['placementData'];
+            newplacementData.push({
+                year: parseInt(req.body['newyear']), 
+                students: parseInt(req.body['newnumber']), 
+                ctc: parseInt(req.body['newctc'])
+            })
 
-        console.log(newplacementData)
+            console.log(newplacementData)
 
-        const newcompanydata = await companyprofiles.findOneAndUpdate({id: companyid}, { $set: {
-            placementData: newplacementData,
-            website: req.body['companywebsite'],
-            'companySocial.website.name': req.body['companywebsite'],
-            'companySocial.linkedin.name': req.body['companylinkedin'],
-            name: req.body['newname'],
-            email: req.body['companymail']
-        }}, {new: true})
-       
-        console.log(newcompanydata)
-        console.log(companyid)
-        res.redirect("/admin/companysearch")
-        // const companyid = req.params.id
-        // const companydata = await companyprofiles.findOne({id: companyid})
-        // const reactComp = renderToString(<CompanyEdit record={companydata}/>);
-        // res.render("./admin/companyedit", {reactApp: reactComp});
+            const newcompanydata = await companyprofiles.findOneAndUpdate({id: companyid}, { $set: {
+                placementData: newplacementData,
+                website: req.body['companywebsite'],
+                'companySocial.website.name': req.body['companywebsite'],
+                'companySocial.linkedin.name': req.body['companylinkedin'],
+                name: req.body['newname'],
+                email: req.body['companymail']
+            }}, {new: true})
+        
+            res.redirect("/admin/companysearch")
+            // const companyid = req.params.id
+            // const companydata = await companyprofiles.findOne({id: companyid})
+            // const reactComp = renderToString(<CompanyEdit record={companydata}/>);
+            // res.render("./admin/companyedit", {reactApp: reactComp});
+        }
     }
     catch (e){
         console.log(e)

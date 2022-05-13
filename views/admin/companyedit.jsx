@@ -42,7 +42,7 @@ export default function CompanyEdit(props){
                 <div className="company-profile-container06">
                   <img
                     src={"/img/companies/" + props.record.name.toLowerCase() + ".png"}
-                    alt="image"
+                    alt=""
                     className="company-profile-image2"
                   />
                 </div>
@@ -106,12 +106,12 @@ export default function CompanyEdit(props){
 
               <div className="company-profile-container20">
               <button className="company-profile-button1 button">
-                <span className="company-profile-text23">FINSIH EDIT</span>
+                <span className="company-profile-text23">FINISH EDIT</span>
               </button>
               <input
                 type="file"
                 id="myfile"
-                name="myfile"
+                name="logo"
                 placeholder="placeholder"
                 className="company-profile-textinput input"
               />
