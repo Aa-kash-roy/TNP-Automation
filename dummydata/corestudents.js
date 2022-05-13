@@ -19,7 +19,7 @@ export async function coreStudentProfileData(){
 
         },
 
-        backlogs: 1,
+        backlogs: 0,
 
         internship: {
             company: "Google",

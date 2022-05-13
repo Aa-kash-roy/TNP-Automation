@@ -512,3 +512,28 @@
     background-color: rgba(24, 218, 113, 0.75);
   }
   
+  .admin-landing-page-container13 {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    position: relative;
+    align-self: center;
+    margin-top: var(--dl-space-space-halfunit);
+    align-items: flex-start;
+    border-radius: 12px;
+    margin-bottom: var(--dl-space-space-unit);
+    background-color: rgba(168, 168, 168, 0.25);
+  }
+  .admin-landing-page-button09 {
+    margin-top: 8px;
+    transition: 0.3s;
+    margin-left: 43%;
+    padding-top: 0.4rem;
+    margin-bottom: 8px;
+    padding-bottom: 0.4rem;
+    background-color: rgba(25, 186, 210, 0.48);
+  }
+  .admin-landing-page-button09:hover {
+    box-shadow: 5px 5px 10px 0px rgba(4, 4, 4, 0.91);
+    background-color: rgba(24, 218, 113, 0.75);
+  }
