@@ -646,7 +646,7 @@
     }
   }
 
-  .company\ profile-container20 {
+  .company-profile-container20 {
     flex: 0 0 auto;
     width: 94%;
     display: flex;
@@ -655,7 +655,7 @@
     align-items: flex-start;
     margin-bottom: var(--dl-space-space-unit);
   }
-  .company\ profile-button1 {
+  .company-profile-button1 {
     font-size: 13px;
     font-style: normal;
     margin-top: 0.5%;
@@ -668,15 +668,15 @@
     padding-bottom: 0.5rem;
     background-color: rgba(25, 186, 210, 0.33);
   }
-  .company\ profile-button1:hover {
+  .company-profile-button1:hover {
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
     background-color: rgba(17, 210, 55, 0.45);
   }
-  .company\ profile-text23 {
+  .company-profile-text23 {
     font-weight: 500;
     letter-spacing: 0.75px;
   }
-  .company\ profile-textinput {
+  .company-profile-textinput {
     margin-left: 2%;
     background-color: rgba(168, 168, 168, 0);
   }

@@ -26,9 +26,9 @@ function companyRow(item, index){
         <span className="admin-company-addremove-text05">{item.email}</span>
         <span className="admin-company-addremove-text06"><a href={"/company/"+item.id}>Company Profile</a></span>
         <button className="admin-company-addremove-button03 button" type="button" name="editcompany" value={item.id}>
-          <a href={"/admin/edit/" + item.id}>EDIT</a>
+          <a href={"/admin/edit/company/" + item.id}>EDIT</a>
         </button>
-        <button className="admin-company-addremove-button04 button" type="button" name="editcompany" value={item.id}>
+        <button className="admin-company-addremove-button04 button" type="button" name="deletecompany" value={item.id}>
           <a href={"/admin/edit/delete/" + item.id}>DELETE</a>
         </button>
       </div>
@@ -74,8 +74,6 @@ function test(){
 
 export default function AdminCompanySearch(props){
     
-    console.log("AA");
-    console.log(props);
     return(
       <div>
       
@@ -188,13 +186,13 @@ export default function AdminCompanySearch(props){
             <button className="admin-company-addremove-button01 button">
               <span className="admin-company-addremove-text">SEARCH</span>
             </button>
-            <button className="admin-company-addremove-button02 button" type="button" name="addcompany" value="addcompany">
-              <a href="/admin/edit/new">
+            {/* <button  type="button" name="addcompany" value="addcompany"> */}
+              <a className="admin-company-addremove-button02 button" href="/admin/edit/new">
                 <span className="admin-company-addremove-text01">
                   ADD COMPANY
                 </span>
               </a>
-            </button>
+            {/* </button> */}
           </div>
           <div className="admin-company-addremove-container06">
             {props.searchParam && props.records.length == 0 && noResult()}
