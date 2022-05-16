@@ -14,7 +14,7 @@ export default function SearchHeader(){
               <nav
                 className="navigation-links-nav navigation-links-root-class-name10"
               >
-                <button className="navigation-links-text"> <a href="/student/BT18CSE031">Profile</a></button>
+                <button className="navigation-links-text"> <a href="/student">Profile</a></button>
                 <button className="navigation-links-text"> <a href="/company/search">Company</a></button>
                 <button className="navigation-links-text"><a href="/placements">Placements</a></button>
               </nav>

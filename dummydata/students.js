@@ -6,7 +6,7 @@ export async function testStudentProfileData(){
     const refresh = await StudentProfileModel.deleteMany({}) //refresh the table on each restart
 
     const studentProfile = await StudentProfileModel.create({
-        enrollmentNumber: "BT18CSE031",
+        enrollmentNumber: "BT18CSE036",
         
         studentInfo:{
             name: "Akash Kumar",

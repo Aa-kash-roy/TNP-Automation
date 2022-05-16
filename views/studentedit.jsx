@@ -84,7 +84,7 @@ export default function StudentProfileEdit(props){
         <StudentHeader/>
         
         <div className="student-profile-container04">
-          <form className="student-profile-form" action={"/student/" + props.record.enrollmentNumber} method="POST" encType="multipart/form-data">
+          <form className="student-profile-form" action="/student" method="POST" encType="multipart/form-data">
             <div className="student-profile-container05">
               <div className="student-profile-profile-container">
                 <img

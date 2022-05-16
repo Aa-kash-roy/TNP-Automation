@@ -6,32 +6,32 @@ export async function coreStudentProfileData(){
     const refresh = await corestudentprofiles.deleteMany({}) //refresh the table on each restart
 
     const studentProfile = await corestudentprofiles.create({
-        enrollmentNumber: "BT18CSE031",
+        enrollmentNumber: "BT18CSE036",
         
         studentInfo:{
             name: "Akash Kumar",
             cgpa: 9.4,
-            semester: 5,
+            semester: 8,
             branch: "CSE",
             passingYear: 2022,
             gender: 'F',
-            email: "bt18cse031@iiitn.ac.in"
+            email: "bt18cse036@iiitn.ac.in"
 
         },
 
-        backlogs: 1,
+        backlogs: 0,
 
         internship: {
             company: "Google",
             designation: "SDE Intern",
             internshipCompleted: "Completed",
-            semester: 6
+            semester: 7
         },
 
         placement: {
             company: "Microsoft", 
             designation: "SDE Intern", 
-            compensation: "10",
+            compensation: 1000000,
             isPlaced: "Pending"
         },
     })
@@ -44,7 +44,7 @@ export async function coreStudentProfileData(){
         studentInfo:{
             name: "Akash Kumar",
             cgpa: 9.4,
-            semester: 5,
+            semester: 8,
             branch: "CSE",
             passingYear: 2022,
             gender: 'M',
@@ -58,13 +58,13 @@ export async function coreStudentProfileData(){
             company: "Google",
             designation: "SDE Intern",
             internshipCompleted: "Pending",
-            semester: 6
+            semester: 8
         },
 
         placement: {
             company: "Microsoft", 
             designation: "SDE Intern", 
-            compensation: "10",
+            compensation: 900000,
             isPlaced: "Placed"
         },
 

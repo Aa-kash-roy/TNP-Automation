@@ -16,14 +16,17 @@ const storage = multer.diskStorage({
         cb(null, "./StudentProfile/resumes")
     },
     filename: function(req, file, cb){
-        cb(null, req.params.id+".pdf")
+        cb(null, req.user.name+".pdf")
     }
 })
 const upload = multer({ storage: storage});
 
-router.get('/:id', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     try{
-        const enrollmentNumber = req.params.id;
+        var enrollmentNumber = req.user.name;
+        console.log(enrollmentNumber)
+        console.log(req.user.isAdmin)
+        // enrollmentNumber="BT18CSE031"
         const coredb = await corestudentprofiles.findOne({enrollmentNumber: enrollmentNumber}).lean()
         const studentdb = await StudentProfileModel.findOne({enrollmentNumber: enrollmentNumber}).lean()
         if(coredb){
@@ -96,17 +99,18 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
-router.post('/:id', upload.single('resume'), (req, res, next) => {
+router.post('/', upload.single('resume'), (req, res, next) => {
 
+    var enrollmentNumber = req.user.name;
+    console.log(enrollmentNumber)
+    console.log("Im in student post !!")
     if(!req.file){ //if nothing is uploaded then delete from db if it exists
-        let path = "./StudentProfile/resumes/" + req.params.id + ".pdf"
+        let path = "./StudentProfile/resumes/" + enrollmentNumber + ".pdf"
         if (fs.existsSync(path)) {
             fs.unlinkSync(path);
         }
-        res.redirect('/student/'+req.params.id);
     }
 
-    else{
         let achievements = [];
         let publications = [];
         for(let i=0; i<5; i++){
@@ -124,8 +128,8 @@ router.post('/:id', upload.single('resume'), (req, res, next) => {
     
         // console.log(req.file.buffer)
     
-    
-        StudentProfileModel.findOneAndUpdate({enrollmentNumber: req.params.id}, { $set: {
+        console.log("HERE" + enrollmentNumber)
+        StudentProfileModel.findOneAndUpdate({enrollmentNumber: enrollmentNumber}, { $set: {
             achievements: achievements,
             publications: publications,
             internships: internships,
@@ -141,44 +145,49 @@ router.post('/:id', upload.single('resume'), (req, res, next) => {
         .then(response => {
     
                 // console.log(response);
-                res.redirect('/student/'+req.params.id);
+                res.redirect('/student');
     
             })
             .catch(err => console.error(err));
-    }
-
-
 
 })
 
 
-router.get('/:id/edit', (req, res, next) => {
-    const enrollmentNumber = req.params.id;
-    StudentProfileModel.find({enrollmentNumber: enrollmentNumber}).lean()
-    .then(response => {
+router.get('/edit', async (req, res, next) => {
+    
+    // var enrollmentNumber = req.user.name;
+    // console.log(enrollmentNumber)
+    var enrollmentNumber = "BT18CSE036"
+    console.log("Im in student edit !!")
+    const response = await StudentProfileModel.find({enrollmentNumber: enrollmentNumber}).lean()
+    // res.redirect('/student')
+    // StudentProfileModel.find({enrollmentNumber: enrollmentNumber}).lean()
+    // .then(response => {
+        console.log(response.length)
         if(response.length > 0){
-            const reactComp = renderToString(<StudentProfileEdit record={response[0]}/>);
-            res.render("./student", {reactApp: reactComp});
+            const reactComp = await renderToString(<StudentProfileEdit record={response[0]}/>);
+            res.render("student", {reactApp: reactComp});
         }
         else{
-            res.redirect('/student/'+enrollmentNumber);
+            res.redirect('/student');
         }
-    })
-    .catch(err => console.error(err));
+    // })
+    // .catch(err => console.error("Im catching error " + err));
 })
 
-router.post('/resume/:id', async (req, res, next) => {
+router.post('/resume', async (req, res, next) => {
     try{
-        const enrollmentNumber = req.params.id
+        const enrollmentNumber = req.user.name
         const details = await StudentProfileModel.findOne({enrollmentNumber: enrollmentNumber}).lean()
         const path = './StudentProfile/resumes/' + enrollmentNumber + ".pdf"
+        console.log(path)
         if (fs.existsSync(path)) {
             var data = fs.readFileSync(path);
             res.contentType("application/pdf");
             res.send(data);
         }
         else{
-            res.redirect('/student/'+req.params.id);
+            res.redirect('/student/'+ req.user.name);
         }
         
     }
