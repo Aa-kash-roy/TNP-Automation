@@ -16,7 +16,7 @@ async function authenticateToken(req, res, next) {
         res.status(401)
     }
 
-    jwt.verify(token, TOKEN_SECRET, (err, user) => {
+    jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
         if (err){ 
             res.redirect('users/login')
         }
@@ -34,7 +34,7 @@ function generateAccessToken(username) {
     if(username.includes("admin")){
         user.isAdmin = true
     }
-    const token = jwt.sign(user, TOKEN_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign(user, process.env.TOKEN_SECRET, { expiresIn: '1h' });
     return token;
 }
 
