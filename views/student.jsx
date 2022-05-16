@@ -69,6 +69,18 @@ function studentDetailsRow(fieldName, fieldValue){
   )
 }
 
+function edit(){
+  return(
+    <a href={"/student/edit"}>
+
+              <button className="student-profile-button1 button" type="button">
+                  <span className="student-profile-text42">
+                    EDIT PROFILE
+                  </span>
+              </button>
+              </a>
+  )
+}
 
 export default function StudentProfile(props){
 
@@ -133,14 +145,10 @@ export default function StudentProfile(props){
                 </div>
               </div>
 
-              <a href={"/student/edit"}>
+              {props.linkid == props.cookieid && edit()}
 
-              <button className="student-profile-button1 button" type="button">
-                  <span className="student-profile-text42">
-                    EDIT PROFILE
-                  </span>
-              </button>
-              </a>
+
+              
 
               <button className="student-profile-button2 button">
                   <span className="student-profile-text43">DOWNLOAD RESUME</span>

@@ -66,7 +66,11 @@ router.post('/login', (req, res, next) => {
     userServices.login({email, password}).then(user => {
         console.log(user.token)
         res.cookie('token', user.token, { httpOnly: true });
-        res.redirect('/student')
+        console.log(user)
+
+        var enrollmentNumber = user.email.split('@')[0]
+        enrollmentNumber = enrollmentNumber.toUpperCase();
+        res.redirect('/student/' + enrollmentNumber)
         // next();
         console.log(user);
     }

@@ -21,9 +21,9 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage: storage});
 
-router.get('/', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
     try{
-        var enrollmentNumber = req.user.name;
+        var enrollmentNumber = req.params.id;
         console.log(enrollmentNumber)
         console.log(req.user.isAdmin)
         // enrollmentNumber="BT18CSE031"
@@ -82,11 +82,11 @@ router.get('/', async (req, res, next) => {
 
                     isPlaced: false
                 })
-                const reactComp = renderToString(<StudentProfile record={createEntry} coredb={coredb}/>);
+                const reactComp = renderToString(<StudentProfile record={createEntry} coredb={coredb} linkid={enrollmentNumber} cookieid={req.user.name}/>);
                 res.render("./student", {reactApp: reactComp});
             }
             else{
-                const reactComp = renderToString(<StudentProfile record={studentdb} coredb={coredb}/>);
+                const reactComp = renderToString(<StudentProfile record={studentdb} coredb={coredb} linkid={enrollmentNumber} cookieid={req.user.name}/>);
                 res.render("./student", {reactApp: reactComp});
             }
         }

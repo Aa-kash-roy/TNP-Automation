@@ -35,6 +35,7 @@ function generateAccessToken(username) {
     if(username.includes("admin")){
         user.isAdmin = true
     }
+    console.log("Isadmin " + user.isAdmin)
     const token = jwt.sign(user, TOKEN_SECRET, { expiresIn: '1h' });
     return token;
 }
