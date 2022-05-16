@@ -145,7 +145,7 @@ router.post('/', upload.single('resume'), (req, res, next) => {
         .then(response => {
     
                 // console.log(response);
-                res.redirect('/student');
+                res.redirect('/student/' + enrollmentNumber);
     
             })
             .catch(err => console.error(err));
@@ -153,11 +153,12 @@ router.post('/', upload.single('resume'), (req, res, next) => {
 })
 
 
-router.get('/edit', async (req, res, next) => {
+router.get('/edit/:id', async (req, res, next) => {
     
-    // var enrollmentNumber = req.user.name;
+    console.log("BB")
+    var enrollmentNumber = req.user.name;
     // console.log(enrollmentNumber)
-    var enrollmentNumber = "BT18CSE036"
+    // var enrollmentNumber = "BT18CSE036"
     console.log("Im in student edit !!")
     const response = await StudentProfileModel.find({enrollmentNumber: enrollmentNumber}).lean()
     // res.redirect('/student')
@@ -169,15 +170,15 @@ router.get('/edit', async (req, res, next) => {
             res.render("student", {reactApp: reactComp});
         }
         else{
-            res.redirect('/student');
+            res.redirect('/student/' + enrollmentNumber);
         }
     // })
     // .catch(err => console.error("Im catching error " + err));
 })
 
-router.post('/resume', async (req, res, next) => {
+router.post('/resume/:id', async (req, res, next) => {
     try{
-        const enrollmentNumber = req.user.name
+        const enrollmentNumber = req.params.id
         const details = await StudentProfileModel.findOne({enrollmentNumber: enrollmentNumber}).lean()
         const path = './StudentProfile/resumes/' + enrollmentNumber + ".pdf"
         console.log(path)
@@ -187,7 +188,7 @@ router.post('/resume', async (req, res, next) => {
             res.send(data);
         }
         else{
-            res.redirect('/student/'+ req.user.name);
+            res.redirect('/student/'+ enrollmentNumber);
         }
         
     }

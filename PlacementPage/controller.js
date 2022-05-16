@@ -13,7 +13,7 @@ const router = express.Router();
 router.get('/', async (req, res, next) => {
 
     try{
-        const enrollmentNumber = "BT18CSE031" //change this to get actual roll or find if user is admin
+        const enrollmentNumber = req.user.name //change this to get actual roll or find if user is admin
         const student = await StudentProfileModel.findOne({enrollmentNumber:enrollmentNumber}).lean()
         const response = await newplacements.find({}).lean()
         const reactComp = renderToString(<Placement records={response} applications={student['applications']}/>);
@@ -26,7 +26,7 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     try{
-        const enrollmentNumber = "BT18CSE031" //change this to get actual roll number
+        const enrollmentNumber = req.user.name //change this to get actual roll number
 
         const coreDetails = await corestudentprofiles.findOne({enrollmentNumber: enrollmentNumber}).lean()
 

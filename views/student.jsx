@@ -69,9 +69,9 @@ function studentDetailsRow(fieldName, fieldValue){
   )
 }
 
-function edit(){
+function edit(props){
   return(
-    <a href={"/student/edit"}>
+    <a href={"/student/edit/" + props.cookieid}>
 
               <button className="student-profile-button1 button" type="button">
                   <span className="student-profile-text42">
@@ -145,7 +145,7 @@ export default function StudentProfile(props){
                 </div>
               </div>
 
-              {props.linkid == props.cookieid && edit()}
+              {props.linkid == props.cookieid && edit(props)}
 
 
               
