@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "transpile": "npx babel-node --presets @babel/preset-env app.js",
-    "start": "npm run transpile",
+    "start": "nodemon --exec npm run transpile",
     "webpack": "webpack -w"
   },
   "repository": {
@@ -38,6 +38,7 @@
     "chart.js": "^3.7.1",
     "chartjs": "^0.3.24",
     "chartjs-node-canvas": "^4.1.6",
+    "compilex": "^0.7.4",
     "compression": "^1.7.4",
     "crypto-browserify": "^3.12.0",
     "date-fns": "^2.28.0",

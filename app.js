@@ -14,7 +14,7 @@ import { newPlacementData } from "./dummydata/newplacements.js"
 import bodyParser from "body-parser"
 import mongoose from "mongoose"
 import {PORT, MONGO_URL} from "./config"
-
+import {authenticateToken} from "./auth/helpers/jwt.js"
 
 //user views
 const users = require('./auth/controllers/UserController.js')
@@ -47,10 +47,18 @@ app.use(bodyParser.urlencoded({ extended: true }))
 console.log(__dirname);
 app.use(express.static(__dirname + "/public"));
 
-
+const authenticate = async(req, res, next) => {
+    
+    await authenticateToken(req, res, next);
+    console.log(req.user)
+    if(res.statusCode != 200){
+        console.log("Not the right token !!")
+    }
+    next();
+}
 //user views
 app.use('/users', users) 
-app.use('/student', student)
+app.use('/student', authenticate, student)
 app.use('/company', company)
 app.use('/practice', practice)
 // app.use('/', test)
@@ -103,7 +111,7 @@ const start = async() =>{
 
     await mongoDbConnect()
     console.log("Database connected !!")
-    app.listen(3001, function () {
+    app.listen(4000, function () {
         console.log('Server is running at port 3001')
     })
 }
