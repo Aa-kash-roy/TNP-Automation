@@ -67,6 +67,7 @@
             </span>
           </div>
           <h1 class="login-page-text4">Login to your account</h1>
+          <%= errors %>
           <form class="login-page-form" method="post" action="/users/login">
             <img
               alt="image"
@@ -93,14 +94,13 @@
             <button type="submit" class="login-page-button button">
               <span class="login-page-text5">STUDENT LOGIN</span>
             </button>
-          <form method="post" action="/users/forgot-password">
             <button
-              type="submit"
               class="login-page-button1 button"
+              name="forgotpassword"
+              value="Forgot Password"
             >
               <span class="login-page-text6">Forgot Password</span>
             </button>
-            </form>
           
           </form>
           <span class="login-page-text7">Not Registered?</span>
