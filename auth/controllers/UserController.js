@@ -46,7 +46,7 @@ router.post('/register', async(req, res, next) => {
 })
 
 router.get('/register/otpvalidation', (req, res) => {
-    res.render('otpvalidation')
+    res.render('otpValidation')
 })
 
 router.post('/register/otpvalidation', (req, res, next) => {
@@ -58,21 +58,34 @@ router.post('/register/otpvalidation', (req, res, next) => {
 })
 
 router.get('/login', (req, res) => {
-    res.render('login')
+    res.render('login', {errors: ""})
 })
 
 router.post('/login', (req, res, next) => {
     const { email, password} = req.body;
+    console.log("VVVVVVV")
+    console.log(req.body)
+    if('forgotpassword' in req.body){
+        res.redirect("/users/forgot-password")
+    }
     userServices.login({email, password}).then(user => {
-        console.log(user.token)
-        res.cookie('token', user.token, { httpOnly: true });
-        console.log(user)
 
-        var enrollmentNumber = user.email.split('@')[0]
-        enrollmentNumber = enrollmentNumber.toUpperCase();
-        res.redirect('/student/' + enrollmentNumber)
-        // next();
-        console.log(user);
+        if(!user){
+            const error_message = "Incorrect Credentials"
+            res.render("login", {errors: error_message})
+        }
+        else{
+            // console.log(user.token)
+            res.cookie('token', user.token, { httpOnly: true });
+            // console.log(user)
+
+            var enrollmentNumber = user.email.split('@')[0]
+            enrollmentNumber = enrollmentNumber.toUpperCase();
+            res.redirect('/student/' + enrollmentNumber)
+            // next();
+            // console.log(user);
+        }
+        
     }
     ).catch(err => next(err))
 })
