@@ -61,7 +61,7 @@ app.use('/student', authenticate, student)
 app.use('/company', company)
 app.use('/practice', practice)
 // app.use('/', test)
-app.use('/placements', placement)
+app.use('/placements', authenticate, placement)
 app.use('/', userlanding)
 
 
