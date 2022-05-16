@@ -73,22 +73,23 @@ router.post('/login', (req, res, next) => {
     ).catch(err => next(err))
 })
 
-router.get('login/forget-password', (req, res) => {
+router.get('/forgot-password', (req, res) => {
     // text field to take input for email !!
-    res.render('')
+    res.render('forgetpassword')
 })
 
-router.post('/login/forget-password', (req, res) =>{
-    validateUser.sendOTPtoemail(req.body.email);
-    res.redirect('/users/login/setpassword');
+router.post('/forgot-password', (req, res) =>{
+
+    console.log("Im in forgot password !!")
+    validate.sendOTPtoemail(req.body.email);
+    res.redirect('/users/setpassword');
 });
 
-router.get('/login/setpassword', (req, res) =>{
-
-    // text field for email, otp, updated Password
+router.get('/setpassword', (req, res) =>{
+    res.render('setpassword')    
 })
 
-router.post('/login/setpassword', (req, res) =>{
+router.post('/setpassword', (req, res) =>{
     
     userServices.setNewPassword(req.body).then(
         res.redirect("/users/login")
