@@ -37,17 +37,17 @@ export default function AdminPlacements(props){
             <div className="admin-company-placement-container01">
               <img
                 alt="image"
-                src="fdd0d679-d542-44ec-bb1d-7aba8b363967"
+                src="/img/iiitn_logo_transperent_back-200h.png"
                 className="admin-company-placement-image"
               />
               <div className="admin-company-placement-nav">
                 <nav
                   className="navigation-links-nav navigation-links-root-class-name26"
                 >
-                  <span className="navigation-links-text"><span>Home</span></span>
-                  <span className="navigation-links-text1"><span>Company</span></span>
+                  <span className="navigation-links-text"><span><a href="/admin">Home</a></span></span>
+                  <span className="navigation-links-text1"><span><a href="/company/search">Company</a></span></span>
                   <span className="navigation-links-text2">
-                    <span>Placements</span>
+                    <span><a href="/admin/placements">Placements</a></span>
                   </span>
                 </nav>
               </div>

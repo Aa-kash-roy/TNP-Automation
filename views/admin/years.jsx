@@ -52,10 +52,10 @@ export default function YearDisplay(props){
               <nav
                 className="navigation-links-nav navigation-links-root-class-name22"
               >
-                <span className="navigation-links-text"><span><a href="/">Home</a></span></span>
+                <span className="navigation-links-text"><span><a href="/admin">Home</a></span></span>
                 <span className="navigation-links-text1"><span><a href="/company/search">Company</a></span></span>
                 <span className="navigation-links-text2">
-                  <span><a href="/placements">Placements</a></span>
+                  <span><a href="/admin/placements">Placements</a></span>
                 </span>
               </nav>
             </div>
