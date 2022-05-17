@@ -5,8 +5,8 @@ const UserOtpVerification = require('../models/otpModel')
 
 async function login({ email, password }) {
     const user = await User.findOne({email});
-    if(!user || user.validated == false)
-        return "User doesn't exist !!"
+    // if(!user || user.validated == false)
+    //     return "User doesn't exist !!"
     // synchronously compare user entered password with hashed password
     if(user && bcrypt.compareSync(password, user.password)){
         const token = auth.generateAccessToken(email);
