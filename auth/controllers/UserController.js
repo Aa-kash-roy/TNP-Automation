@@ -10,6 +10,18 @@ router.get('/register', (req, res) => {
     })
 })
 
+router.get('/register/otpvalidation', (req, res) => {
+    res.render('otpValidation')
+})
+
+router.get('/login', (req, res) => {
+    res.render('login')
+})
+
+router.get('login/forget-password', (req, res) => {
+    res.render('')
+})
+
 router.post('/register', async(req, res, next) => {
 
     const {password} = req.body
