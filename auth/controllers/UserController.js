@@ -11,7 +11,7 @@ router.get('/register', (req, res) => {
 })
 
 router.get('/register/otpvalidation', (req, res) => {
-    res.render('otpvalidation')
+    res.render('otpValidation')
 })
 
 router.get('/login', (req, res) => {
